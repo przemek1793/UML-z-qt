@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
- <class>Rejestracja</class>
- <widget class="QDialog" name="Rejestracja">
+ <class>Logowanie</class>
+ <widget class="QDialog" name="Logowanie">
   <property name="geometry">
    <rect>
     <x>0</x>
@@ -17,7 +17,7 @@
    <item>
     <widget class="QLabel" name="label_3">
      <property name="text">
-      <string>Rejestracja</string>
+      <string>Logowanie</string>
      </property>
     </widget>
    </item>
@@ -49,19 +49,6 @@
     </widget>
    </item>
    <item>
-    <spacer name="verticalSpacer">
-     <property name="orientation">
-      <enum>Qt::Vertical</enum>
-     </property>
-     <property name="sizeHint" stdset="0">
-      <size>
-       <width>20</width>
-       <height>40</height>
-      </size>
-     </property>
-    </spacer>
-   </item>
-   <item>
     <widget class="QLabel" name="label_2">
      <property name="text">
       <string>Hasło</string>
@@ -69,9 +56,29 @@
     </widget>
    </item>
    <item>
+    <spacer name="verticalSpacer">
+     <property name="orientation">
+      <enum>Qt::Vertical</enum>
+     </property>
+     <property name="sizeHint" stdset="0">
+      <size>
+       <width>20</width>
+       <height>31</height>
+      </size>
+     </property>
+    </spacer>
+   </item>
+   <item>
     <widget class="QLineEdit" name="Haslo">
      <property name="styleSheet">
       <string notr="true">background-color:white;</string>
+     </property>
+    </widget>
+   </item>
+   <item>
+    <widget class="QLabel" name="Komunikat">
+     <property name="text">
+      <string/>
      </property>
     </widget>
    </item>
@@ -83,25 +90,18 @@
      <property name="sizeHint" stdset="0">
       <size>
        <width>20</width>
-       <height>40</height>
+       <height>36</height>
       </size>
      </property>
     </spacer>
    </item>
    <item>
-    <widget class="QLabel" name="Komunikat">
-     <property name="text">
-      <string/>
-     </property>
-    </widget>
-   </item>
-   <item>
-    <widget class="QPushButton" name="Rejestruj">
+    <widget class="QPushButton" name="Loguj">
      <property name="styleSheet">
       <string notr="true">background-color:white;</string>
      </property>
      <property name="text">
-      <string>Rejestruj</string>
+      <string>Loguj</string>
      </property>
     </widget>
    </item>
@@ -113,7 +113,7 @@
      <property name="sizeHint" stdset="0">
       <size>
        <width>20</width>
-       <height>40</height>
+       <height>22</height>
       </size>
      </property>
     </spacer>

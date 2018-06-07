@@ -28,14 +28,17 @@ SOURCES += \
         main.cpp \
         mainwindow.cpp \
     rejestracja.cpp \
-    niezalogowany.cpp
+    niezalogowany.cpp \
+    logowanie.cpp
 
 HEADERS += \
         mainwindow.h \
     rejestracja.h \
-    niezalogowany.h
+    niezalogowany.h \
+    logowanie.h
 
 FORMS += \
         mainwindow.ui \
     rejestracja.ui \
-    niezalogowany.ui
+    niezalogowany.ui \
+    logowanie.ui

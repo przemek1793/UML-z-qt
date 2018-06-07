@@ -4,6 +4,7 @@
 
 extern QStackedWidget* stack;
 extern int rejestracja;
+extern int logowanie;
 
 Niezalogowany::Niezalogowany(QWidget *parent) :
     QDialog(parent),
@@ -19,7 +20,7 @@ Niezalogowany::~Niezalogowany()
 
 void Niezalogowany::on_Zaloguj_clicked()
 {
-
+    stack->setCurrentIndex(logowanie);
 }
 
 void Niezalogowany::on_Rejestruj_clicked()
