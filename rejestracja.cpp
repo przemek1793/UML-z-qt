@@ -1,6 +1,7 @@
 #include "rejestracja.h"
 #include "ui_rejestracja.h"
 #include <QStackedWidget>
+#include <QtSql>
 
 extern QStackedWidget* stack;
 extern int niezalogowany;
@@ -20,4 +21,25 @@ Rejestracja::~Rejestracja()
 void Rejestracja::on_Wstecz_clicked()
 {
     stack->setCurrentIndex(niezalogowany);
+}
+
+void Rejestracja::on_Rejestruj_clicked()
+{
+    std::string haslo=ui->Haslo->text().toLocal8Bit().constData();
+    QSqlQuery query;
+    if (contains_digits(haslo))
+    {
+        if (query.exec("INSERT INTO konta (login, haslo, typ) values ('"+ui->Login->text()+"', '"+ui->Haslo->text()+"', 'Organizator');"))
+        {
+            ui->Komunikat->setText("Konto utworzone");
+        }
+        else
+        {
+            ui->Komunikat->setText("Login już jest zajęty");
+        }
+    }
+    else
+    {
+        ui->Komunikat->setText("Hasło musi zawierać cyfre");
+    }
 }
