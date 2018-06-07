@@ -18,6 +18,8 @@ public:
 private slots:
     void on_Zaloguj_clicked();
 
+    void on_Rejestruj_clicked();
+
 private:
     Ui::Niezalogowany *ui;
 };

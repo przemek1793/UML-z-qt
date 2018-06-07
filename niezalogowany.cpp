@@ -19,5 +19,10 @@ Niezalogowany::~Niezalogowany()
 
 void Niezalogowany::on_Zaloguj_clicked()
 {
+
+}
+
+void Niezalogowany::on_Rejestruj_clicked()
+{
     stack->setCurrentIndex(rejestracja);
 }

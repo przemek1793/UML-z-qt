@@ -15,6 +15,9 @@ public:
     explicit Rejestracja(QWidget *parent = 0);
     ~Rejestracja();
 
+private slots:
+    void on_Wstecz_clicked();
+
 private:
     Ui::Rejestracja *ui;
 };
