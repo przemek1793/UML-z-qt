@@ -22,10 +22,11 @@ int main(int argc, char *argv[])
     {
         query.exec("CREATE TABLE `uml_qt`.`konta` ( `login` VARCHAR(40) NOT NULL , `haslo` VARCHAR(40) NOT NULL , `typ` ENUM('Organizator','Obsluga','Doradca','Administrator') NOT NULL , PRIMARY KEY (`login`))");
     }
-    //query.exec("create table xxx (a int)"); <----- działa
-
-
-
+    query.exec("SELECT * FROM przyjecia");
+    if (!query.next())
+    {
+        query.exec("CREATE TABLE `uml_qt`.`przyjecia` ( `organizator` VARCHAR(40) NOT NULL , `data` DATE NOT NULL , `zatrudniona obsluga` VARCHAR(400) NOT NULL , `zatrudnieni doradcy` VARCHAR(400) NOT NULL , PRIMARY KEY (`organizator`))");
+    }
 
     return aplikacja.exec();
 }
