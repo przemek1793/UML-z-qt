@@ -29,16 +29,28 @@ SOURCES += \
         mainwindow.cpp \
     rejestracja.cpp \
     niezalogowany.cpp \
-    logowanie.cpp
+    logowanie.cpp \
+    organizator.cpp \
+    obsluga.cpp \
+    doradca.cpp \
+    administrator.cpp
 
 HEADERS += \
         mainwindow.h \
     rejestracja.h \
     niezalogowany.h \
-    logowanie.h
+    logowanie.h \
+    organizator.h \
+    obsluga.h \
+    doradca.h \
+    administrator.h
 
 FORMS += \
         mainwindow.ui \
     rejestracja.ui \
     niezalogowany.ui \
-    logowanie.ui
+    logowanie.ui \
+    organizator.ui \
+    obsluga.ui \
+    doradca.ui \
+    administrator.ui

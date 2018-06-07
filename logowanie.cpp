@@ -4,7 +4,7 @@
 #include <QtSql>
 
 extern QStackedWidget* stack;
-extern int niezalogowany;
+extern int niezalogowany,organizator,obsluga,doradca,administrator;
 
 Logowanie::Logowanie(QWidget *parent) :
     QDialog(parent),
@@ -30,7 +30,31 @@ void Logowanie::on_Loguj_clicked()
     {
         if (query.next())
         {
-            ui->Komunikat->setText("Zalogowano - zmien na przejscie jak bedzie na odpowiedni panel");
+            QString typ = query.value(2).toString();
+            if (typ=="Organizator")
+            {
+                ui->Komunikat->setText("");
+                stack->setCurrentIndex(organizator);
+            }
+            else if (typ=="Obsluga")
+            {
+                ui->Komunikat->setText("");
+                stack->setCurrentIndex(obsluga);
+            }
+            else if (typ=="Doradca")
+            {
+                ui->Komunikat->setText("");
+                stack->setCurrentIndex(doradca);
+            }
+            else if (typ=="Administrator")
+            {
+                ui->Komunikat->setText("");
+                stack->setCurrentIndex(administrator);
+            }
+            else
+            {
+                ui->Komunikat->setText("Bląd z typem konta");
+            }
         }
         else
         {
