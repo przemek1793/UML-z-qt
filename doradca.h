@@ -18,6 +18,8 @@ public:
 private slots:
     void on_Wyloguj_clicked();
 
+    void on_Wiadomosc_clicked();
+
 private:
     Ui::Doradca *ui;
 };

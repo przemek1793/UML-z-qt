@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
- <class>Organizator</class>
- <widget class="QDialog" name="Organizator">
+ <class>Wiadomosci</class>
+ <widget class="QDialog" name="Wiadomosci">
   <property name="geometry">
    <rect>
     <x>0</x>
@@ -15,17 +15,7 @@
   </property>
   <layout class="QVBoxLayout" name="verticalLayout">
    <item>
-    <widget class="QPushButton" name="Kalendarz">
-     <property name="styleSheet">
-      <string notr="true">background-color:white;</string>
-     </property>
-     <property name="text">
-      <string>Kalendarz</string>
-     </property>
-    </widget>
-   </item>
-   <item>
-    <spacer name="verticalSpacer_3">
+    <spacer name="verticalSpacer">
      <property name="orientation">
       <enum>Qt::Vertical</enum>
      </property>
@@ -38,12 +28,12 @@
     </spacer>
    </item>
    <item>
-    <widget class="QPushButton" name="NowePrzyjecie">
+    <widget class="QPushButton" name="Wyslij">
      <property name="styleSheet">
       <string notr="true">background-color:white;</string>
      </property>
      <property name="text">
-      <string>Stwórz nowe przyjęcie</string>
+      <string>Wyslij wiadomosc</string>
      </property>
     </widget>
    </item>
@@ -61,17 +51,17 @@
     </spacer>
    </item>
    <item>
-    <widget class="QPushButton" name="Wiadomosc">
+    <widget class="QPushButton" name="Sprawdz">
      <property name="styleSheet">
       <string notr="true">background-color:white;</string>
      </property>
      <property name="text">
-      <string>Wiadomości</string>
+      <string>Sprawdź wiadomości</string>
      </property>
     </widget>
    </item>
    <item>
-    <spacer name="verticalSpacer">
+    <spacer name="verticalSpacer_3">
      <property name="orientation">
       <enum>Qt::Vertical</enum>
      </property>
@@ -84,12 +74,12 @@
     </spacer>
    </item>
    <item>
-    <widget class="QPushButton" name="Wyloguj">
+    <widget class="QPushButton" name="Wstecz">
      <property name="styleSheet">
       <string notr="true">background-color:white;</string>
      </property>
      <property name="text">
-      <string>Wyloguj</string>
+      <string>Wstecz</string>
      </property>
     </widget>
    </item>

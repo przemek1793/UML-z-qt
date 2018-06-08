@@ -43,7 +43,7 @@
       <string notr="true">background-color:white;</string>
      </property>
      <property name="text">
-      <string>Wyślij wiadomość</string>
+      <string>Wiadomości</string>
      </property>
     </widget>
    </item>

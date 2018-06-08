@@ -2,9 +2,11 @@
 #include "ui_organizator.h"
 #include <QStackedWidget>
 #include <QtSql>
+#include "wiadomosci.h"
+#include "noweprzyjecie.h"
 
 extern QStackedWidget* stack;
-extern int niezalogowany;
+extern int niezalogowany, wiadomosci, noweprzyjecie;
 
 Organizator::Organizator(QWidget *parent) :
     QDialog(parent),
@@ -21,4 +23,14 @@ Organizator::~Organizator()
 void Organizator::on_Wyloguj_clicked()
 {
     stack->setCurrentIndex(niezalogowany);
+}
+
+void Organizator::on_Wiadomosc_clicked()
+{
+    stack->setCurrentIndex(wiadomosci);
+}
+
+void Organizator::on_NowePrzyjecie_clicked()
+{
+    stack->setCurrentIndex(noweprzyjecie);
 }

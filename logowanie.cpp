@@ -5,6 +5,7 @@
 
 extern QStackedWidget* stack;
 extern int niezalogowany,organizator,obsluga,doradca,administrator;
+QString loginZalogowany, typ;
 
 Logowanie::Logowanie(QWidget *parent) :
     QDialog(parent),
@@ -30,29 +31,34 @@ void Logowanie::on_Loguj_clicked()
     {
         if (query.next())
         {
-            QString typ = query.value(2).toString();
+            typ = query.value(2).toString();
             if (typ=="Organizator")
             {
+                loginZalogowany=ui->Login->text();
                 ui->Komunikat->setText("");
                 stack->setCurrentIndex(organizator);
             }
             else if (typ=="Obsluga")
             {
+                loginZalogowany=ui->Login->text();
                 ui->Komunikat->setText("");
                 stack->setCurrentIndex(obsluga);
             }
             else if (typ=="Doradca")
             {
+                loginZalogowany=ui->Login->text();
                 ui->Komunikat->setText("");
                 stack->setCurrentIndex(doradca);
             }
             else if (typ=="Administrator")
             {
+                loginZalogowany=ui->Login->text();
                 ui->Komunikat->setText("");
                 stack->setCurrentIndex(administrator);
             }
             else
             {
+                loginZalogowany=ui->Login->text();
                 ui->Komunikat->setText("Bląd z typem konta");
             }
         }

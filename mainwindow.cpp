@@ -7,16 +7,12 @@
 #include "obsluga.h"
 #include "doradca.h"
 #include "administrator.h"
+#include "wiadomosci.h"
+#include "noweprzyjecie.h"
 #include <QStackedWidget>
 
 QStackedWidget* stack;
-int rejestracja;
-int niezalogowany;
-int logowanie;
-int organizator;
-int obsluga;
-int doradca;
-int administrator;
+int rejestracja, niezalogowany, logowanie, organizator, obsluga, doradca, administrator, wiadomosci, noweprzyjecie;
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
@@ -31,6 +27,8 @@ MainWindow::MainWindow(QWidget *parent) :
     obsluga=ui->stackedWidget->addWidget(new Obsluga());
     doradca=ui->stackedWidget->addWidget(new Doradca());
     administrator=ui->stackedWidget->addWidget(new Administrator());
+    wiadomosci=ui->stackedWidget->addWidget(new Wiadomosci());
+    noweprzyjecie=ui->stackedWidget->addWidget(new NowePrzyjecie());
     ui->stackedWidget->setCurrentIndex(niezalogowany);
 }
 

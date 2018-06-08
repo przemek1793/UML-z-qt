@@ -18,6 +18,10 @@ public:
 private slots:
     void on_Wyloguj_clicked();
 
+    void on_Wiadomosc_clicked();
+
+    void on_NowePrzyjecie_clicked();
+
 private:
     Ui::Organizator *ui;
 };

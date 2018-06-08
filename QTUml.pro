@@ -33,7 +33,9 @@ SOURCES += \
     organizator.cpp \
     obsluga.cpp \
     doradca.cpp \
-    administrator.cpp
+    administrator.cpp \
+    wiadomosci.cpp \
+    noweprzyjecie.cpp
 
 HEADERS += \
         mainwindow.h \
@@ -43,7 +45,9 @@ HEADERS += \
     organizator.h \
     obsluga.h \
     doradca.h \
-    administrator.h
+    administrator.h \
+    wiadomosci.h \
+    noweprzyjecie.h
 
 FORMS += \
         mainwindow.ui \
@@ -53,4 +57,6 @@ FORMS += \
     organizator.ui \
     obsluga.ui \
     doradca.ui \
-    administrator.ui
+    administrator.ui \
+    wiadomosci.ui \
+    noweprzyjecie.ui

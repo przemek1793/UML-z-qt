@@ -2,9 +2,10 @@
 #include "ui_doradca.h"
 #include <QStackedWidget>
 #include <QtSql>
+#include "wiadomosci.h"
 
 extern QStackedWidget* stack;
-extern int niezalogowany;
+extern int niezalogowany, wiadomosci;
 
 Doradca::Doradca(QWidget *parent) :
     QDialog(parent),
@@ -21,4 +22,9 @@ Doradca::~Doradca()
 void Doradca::on_Wyloguj_clicked()
 {
     stack->setCurrentIndex(niezalogowany);
+}
+
+void Doradca::on_Wiadomosc_clicked()
+{
+    stack->setCurrentIndex(wiadomosci);
 }
