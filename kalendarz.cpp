@@ -33,16 +33,20 @@ Kalendarz::Kalendarz(QWidget *parent) :
     }
     else if (typ=="Doradca")
     {
-        stack->setCurrentIndex(doradca);
+        query.exec("SELECT data FROM `przyjecia` WHERE `zatrudnieni doradcy` LIKE '%"+loginZalogowany+"'%");
+        while (query.next())
+        {
+            ui->KalendarzWidget->setDateTextFormat(QDate(query.value(0).toDate()),format);
+        }
     }
     else if (typ=="Obsluga")
     {
-        stack->setCurrentIndex(obsluga);
+        query.exec("SELECT data FROM `przyjecia` WHERE 'zatrudniona obsluga' LIKE '%"+loginZalogowany+"'%");
+        while (query.next())
+        {
+            ui->KalendarzWidget->setDateTextFormat(QDate(query.value(0).toDate()),format);
+        }
     }
-
-    //ui->KalendarzWidget->setDateTextFormat(QDate(2018,06,12),format); - pokolorował dobrą datę
-
-    //void QCalendarWidget::setDateTextFormat(const QDate &date, const QTextCharFormat &format)
 }
 
 Kalendarz::~Kalendarz()
