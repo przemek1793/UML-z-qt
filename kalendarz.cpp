@@ -60,21 +60,25 @@ void Kalendarz::on_Wstecz_clicked()
     {
         stack->setCurrentIndex(organizator);
         stack->removeWidget(this);
+        this->~Kalendarz();
     }
     else if (typ=="Doradca")
     {
         stack->setCurrentIndex(doradca);
         stack->removeWidget(this);
+        this->~Kalendarz();
     }
     else if (typ=="Obsluga")
     {
         stack->setCurrentIndex(obsluga);
         stack->removeWidget(this);
+        this->~Kalendarz();
     }
     else
     {
         stack->setCurrentIndex(niezalogowany);
         stack->removeWidget(this);
+        this->~Kalendarz();
     }
 }
 

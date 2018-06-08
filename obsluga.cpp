@@ -2,6 +2,7 @@
 #include "ui_obsluga.h"
 #include <QStackedWidget>
 #include <QtSql>
+#include "kalendarz.h"
 
 extern QStackedWidget* stack;
 extern int niezalogowany;
@@ -25,5 +26,6 @@ void Obsluga::on_Wyloguj_clicked()
 
 void Obsluga::on_Kalendarz_clicked()
 {
-    //stack->setCurrentIndex(kalendarz);
+    int kalend=stack->addWidget(new Kalendarz());
+    stack->setCurrentIndex(kalend);
 }

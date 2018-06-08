@@ -3,6 +3,7 @@
 #include <QStackedWidget>
 #include <QtSql>
 #include "wiadomosci.h"
+#include "kalendarz.h"
 
 extern QStackedWidget* stack;
 extern int niezalogowany, wiadomosci;
@@ -31,5 +32,6 @@ void Doradca::on_Wiadomosc_clicked()
 
 void Doradca::on_Kalendarz_clicked()
 {
-    //stack->setCurrentIndex(kalendarz);
+    int kalend=stack->addWidget(new Kalendarz());
+    stack->setCurrentIndex(kalend);
 }
