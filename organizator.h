@@ -22,6 +22,8 @@ private slots:
 
     void on_NowePrzyjecie_clicked();
 
+    void on_Kalendarz_clicked();
+
 private:
     Ui::Organizator *ui;
 };

@@ -4,6 +4,7 @@
 #include <QtSql>
 #include "wiadomosci.h"
 #include "noweprzyjecie.h"
+#include "kalendarz.h"
 
 extern QStackedWidget* stack;
 extern int niezalogowany, wiadomosci, noweprzyjecie;
@@ -33,4 +34,10 @@ void Organizator::on_Wiadomosc_clicked()
 void Organizator::on_NowePrzyjecie_clicked()
 {
     stack->setCurrentIndex(noweprzyjecie);
+}
+
+void Organizator::on_Kalendarz_clicked()
+{
+    int kalend=stack->addWidget(new Kalendarz());
+    stack->setCurrentIndex(kalend);
 }

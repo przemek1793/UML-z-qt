@@ -22,3 +22,8 @@ void Obsluga::on_Wyloguj_clicked()
 {
     stack->setCurrentIndex(niezalogowany);
 }
+
+void Obsluga::on_Kalendarz_clicked()
+{
+    //stack->setCurrentIndex(kalendarz);
+}

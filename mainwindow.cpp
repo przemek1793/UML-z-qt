@@ -9,6 +9,7 @@
 #include "administrator.h"
 #include "wiadomosci.h"
 #include "noweprzyjecie.h"
+#include "kalendarz.h"
 #include <QStackedWidget>
 
 QStackedWidget* stack;

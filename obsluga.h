@@ -18,6 +18,8 @@ public:
 private slots:
     void on_Wyloguj_clicked();
 
+    void on_Kalendarz_clicked();
+
 private:
     Ui::Obsluga *ui;
 };

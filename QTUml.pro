@@ -35,7 +35,8 @@ SOURCES += \
     doradca.cpp \
     administrator.cpp \
     wiadomosci.cpp \
-    noweprzyjecie.cpp
+    noweprzyjecie.cpp \
+    kalendarz.cpp
 
 HEADERS += \
         mainwindow.h \
@@ -47,7 +48,8 @@ HEADERS += \
     doradca.h \
     administrator.h \
     wiadomosci.h \
-    noweprzyjecie.h
+    noweprzyjecie.h \
+    kalendarz.h
 
 FORMS += \
         mainwindow.ui \
@@ -59,4 +61,5 @@ FORMS += \
     doradca.ui \
     administrator.ui \
     wiadomosci.ui \
-    noweprzyjecie.ui
+    noweprzyjecie.ui \
+    kalendarz.ui

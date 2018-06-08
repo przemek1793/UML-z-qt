@@ -28,3 +28,8 @@ void Doradca::on_Wiadomosc_clicked()
 {
     stack->setCurrentIndex(wiadomosci);
 }
+
+void Doradca::on_Kalendarz_clicked()
+{
+    //stack->setCurrentIndex(kalendarz);
+}

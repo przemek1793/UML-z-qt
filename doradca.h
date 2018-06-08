@@ -20,6 +20,8 @@ private slots:
 
     void on_Wiadomosc_clicked();
 
+    void on_Kalendarz_clicked();
+
 private:
     Ui::Doradca *ui;
 };
