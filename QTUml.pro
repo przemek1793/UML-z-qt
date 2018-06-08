@@ -36,7 +36,10 @@ SOURCES += \
     administrator.cpp \
     wiadomosci.cpp \
     noweprzyjecie.cpp \
-    kalendarz.cpp
+    kalendarz.cpp \
+    detaleprzyjeciaorganizator.cpp \
+    detaleprzyjeciaadmin.cpp \
+    detaleprzyjeciapracownicy.cpp
 
 HEADERS += \
         mainwindow.h \
@@ -49,7 +52,10 @@ HEADERS += \
     administrator.h \
     wiadomosci.h \
     noweprzyjecie.h \
-    kalendarz.h
+    kalendarz.h \
+    detaleprzyjeciaorganizator.h \
+    detaleprzyjeciaadmin.h \
+    detaleprzyjeciapracownicy.h
 
 FORMS += \
         mainwindow.ui \
@@ -62,4 +68,7 @@ FORMS += \
     administrator.ui \
     wiadomosci.ui \
     noweprzyjecie.ui \
-    kalendarz.ui
+    kalendarz.ui \
+    detaleprzyjeciaorganizator.ui \
+    detaleprzyjeciaadmin.ui \
+    detaleprzyjeciapracownicy.ui

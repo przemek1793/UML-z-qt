@@ -3,6 +3,9 @@
 #include <QStackedWidget>
 #include <QtSql>
 #include <QTextCharFormat>
+#include "detaleprzyjeciaadmin.h"
+#include "detaleprzyjeciaorganizator.h"
+#include "detaleprzyjeciapracownicy.h"
 
 extern QStackedWidget* stack;
 extern int organizator, doradca, niezalogowany,obsluga;
@@ -84,5 +87,25 @@ void Kalendarz::on_Wstecz_clicked()
 
 void Kalendarz::on_KalendarzWidget_activated(const QDate &date) //jak 2 razy kliknie date w kalendarzu to sprawdzam czy jest to jakaś data imprezy a jeśli tak to przejdę na szczegóły
 {
-
+    if (ui->KalendarzWidget->dateTextFormat(date).foreground()==QColor(255,0,0))
+    {
+        if (typ=="Organizator")
+        {
+            DetalePrzyjeciaOrganizator* detale=new DetalePrzyjeciaOrganizator(&date, kalendarzindeks);
+            int detal=stack->addWidget(detale);
+            stack->setCurrentIndex(detal);
+        }
+        else if (typ=="Doradca"||typ=="Obsluga")
+        {
+            DetalePrzyjeciaPracownicy* detale=new DetalePrzyjeciaPracownicy(&date, kalendarzindeks);
+            int detal=stack->addWidget(detale);
+            stack->setCurrentIndex(detal);
+        }
+        else
+        {
+            stack->setCurrentIndex(niezalogowany);
+            stack->removeWidget(this);
+            this->~Kalendarz();
+        }
+    }
 }

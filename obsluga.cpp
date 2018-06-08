@@ -26,6 +26,8 @@ void Obsluga::on_Wyloguj_clicked()
 
 void Obsluga::on_Kalendarz_clicked()
 {
-    int kalend=stack->addWidget(new Kalendarz());
+    Kalendarz* k=new Kalendarz();
+    int kalend=stack->addWidget(k);
+    k->kalendarzindeks=kalend;
     stack->setCurrentIndex(kalend);
 }

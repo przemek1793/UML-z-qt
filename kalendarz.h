@@ -14,6 +14,7 @@ class Kalendarz : public QDialog
 public:
     explicit Kalendarz(QWidget *parent = 0);
     ~Kalendarz();
+    int kalendarzindeks;
 
 private slots:
 

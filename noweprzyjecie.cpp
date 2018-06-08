@@ -31,7 +31,7 @@ void NowePrzyjecie::on_Utworz_clicked()
     if (data>QDate::currentDate())
     {
         QSqlQuery query;
-        if (query.exec("INSERT INTO przyjecia (organizator, data) values ('"+loginZalogowany+"', STR_TO_DATE('"+data.toString("dd-MM-yyyy")+"',\"%d-%m-%Y\"));"))
+        if (query.exec("INSERT INTO przyjecia (nazwa, organizator, data) values ('"+ui->Nazwa->text()+"', '"+loginZalogowany+"', STR_TO_DATE('"+data.toString("dd-MM-yyyy")+"',\"%d-%m-%Y\"));"))
         {
             ui->Komunikat->setText("Przyjęcie utworzone");
         }

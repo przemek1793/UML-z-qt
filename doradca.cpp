@@ -32,6 +32,8 @@ void Doradca::on_Wiadomosc_clicked()
 
 void Doradca::on_Kalendarz_clicked()
 {
-    int kalend=stack->addWidget(new Kalendarz());
+    Kalendarz* k=new Kalendarz();
+    int kalend=stack->addWidget(k);
+    k->kalendarzindeks=kalend;
     stack->setCurrentIndex(kalend);
 }
