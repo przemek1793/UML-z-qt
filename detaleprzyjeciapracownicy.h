@@ -21,6 +21,8 @@ public:
 private slots:
     void on_Wstecz_clicked();
 
+    void on_Zrezygnuj_clicked();
+
 private:
     Ui::DetalePrzyjeciaPracownicy *ui;
 };

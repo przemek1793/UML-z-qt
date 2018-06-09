@@ -35,6 +35,13 @@
     </spacer>
    </item>
    <item>
+    <widget class="QLabel" name="Komunikat">
+     <property name="text">
+      <string/>
+     </property>
+    </widget>
+   </item>
+   <item>
     <widget class="QPushButton" name="Zrezygnuj">
      <property name="styleSheet">
       <string notr="true">background-color:white;</string>
