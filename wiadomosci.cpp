@@ -1,5 +1,6 @@
 #include "wiadomosci.h"
 #include "ui_wiadomosci.h"
+#include "nowawiadomosc.h"
 #include <QStackedWidget>
 #include <QtSql>
 
@@ -33,4 +34,10 @@ void Wiadomosci::on_Wstecz_clicked()
     {
         stack->setCurrentIndex(niezalogowany);
     }
+}
+
+void Wiadomosci::on_Wyslij_clicked()
+{
+    int nowa=stack->addWidget(new NowaWiadomosc());
+    stack->setCurrentIndex(nowa);
 }

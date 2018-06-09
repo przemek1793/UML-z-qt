@@ -18,6 +18,8 @@ public:
 private slots:
     void on_Wstecz_clicked();
 
+    void on_Wyslij_clicked();
+
 private:
     Ui::Wiadomosci *ui;
 };
