@@ -79,7 +79,7 @@ int ZatrudnijPracownikow::Zatrudnij_doradcow()
     while (query.next())
     {
         QSqlQuery przyjecia;
-        przyjecia.exec("SELECT * FROM przyjecia where odmowili_pracy like '%"+query.value(0).toString()+",%' and organizator="+loginZalogowany+" and data_wydarzenia=STR_TO_DATE('"+date->toString("dd-MM-yyyy")+"',\"%d-%m-%Y\")");
+        przyjecia.exec("SELECT * FROM przyjecia where odmowili_pracy like '%"+query.value(0).toString()+",%' and organizator='"+loginZalogowany+"' and data_wydarzenia=STR_TO_DATE('"+date->toString("dd-MM-yyyy")+"',\"%d-%m-%Y\")");
         if (przyjecia.size()<1)
         {
             //ten doradca nie odmówił pracy przy przyjęciu
@@ -93,7 +93,7 @@ int ZatrudnijPracownikow::Zatrudnij_doradcow()
                 {
                     QDate data=QDate::currentDate();
                     data=data.addDays(14);
-                    if (query.value(0).toDate()<data) // dana praca jest w okresie mniej niż 2 tygodni
+                    if (przyjecia.value(0).toDate()<data) // dana praca jest w okresie mniej niż 2 tygodni
                     {
                         ileobecny++;
                     }
@@ -134,7 +134,7 @@ int ZatrudnijPracownikow::Zatrudnij_obsluge()
     while (query.next())
     {
         QSqlQuery przyjecia;
-        przyjecia.exec("SELECT * FROM przyjecia where odmowili_pracy like '%"+query.value(0).toString()+",%' and organizator="+loginZalogowany+" and data_wydarzenia=STR_TO_DATE('"+date->toString("dd-MM-yyyy")+"',\"%d-%m-%Y\")");
+        przyjecia.exec("SELECT * FROM przyjecia where odmowili_pracy like '%"+query.value(0).toString()+",%' and organizator='"+loginZalogowany+"' and data_wydarzenia=STR_TO_DATE('"+date->toString("dd-MM-yyyy")+"',\"%d-%m-%Y\")");
         if (przyjecia.size()<1)
         {
             //ten pracownik nie odmówił pracy przy przyjęciu
@@ -148,7 +148,7 @@ int ZatrudnijPracownikow::Zatrudnij_obsluge()
                 {
                     QDate data=QDate::currentDate();
                     data=data.addDays(14);
-                    if (query.value(0).toDate()<data) // dana praca jest w okresie mniej niż 2 tygodni
+                    if (przyjecia.value(0).toDate()<data) // dana praca jest w okresie mniej niż 2 tygodni
                     {
                         ileobecny++;
                     }
