@@ -26,12 +26,12 @@ int main(int argc, char *argv[])
     query.exec("SELECT * FROM przyjecia");
     if (!query.next())
     {
-        query.exec("CREATE TABLE `uml_qt`.`przyjecia` ( `nazwa` VARCHAR(40) NOT NULL , `organizator` VARCHAR(40) NOT NULL , `data` DATE NOT NULL , `zatrudniona obsluga` VARCHAR(400) DEFAULT NULL , `zatrudnieni doradcy` VARCHAR(400) DEFAULT NULL, `odmowili pracy` VARCHAR(400) DEFAULT NULL)");
+        query.exec("CREATE TABLE `uml_qt`.`przyjecia` ( `nazwa` VARCHAR(40) NOT NULL , `organizator` VARCHAR(40) NOT NULL , `data_wydarzenia` DATE NOT NULL , `zatrudniona_obsluga` VARCHAR(400) DEFAULT NULL , `zatrudnieni_doradcy` VARCHAR(400) DEFAULT NULL, `odmowili_pracy` VARCHAR(400) DEFAULT NULL)");
     }
     query.exec("SELECT * FROM wiadomosci");
     if (!query.next())
     {
-        query.exec("CREATE TABLE `uml_qt`.`wiadomosci` ( `nadawca` VARCHAR(40) NOT NULL , `odbiorca` VARCHAR(40) NOT NULL , `wiadomosc` VARCHAR(800) NOT NULL , `data` DATE NOT NULL )");
+        query.exec("CREATE TABLE `uml_qt`.`wiadomosci` ( `nadawca` VARCHAR(40) NOT NULL , `odbiorca` VARCHAR(40) NOT NULL , `wiadomosc` VARCHAR(800) NOT NULL , `data_wiadomości` DATE NOT NULL )");
     }
 
     return aplikacja.exec();

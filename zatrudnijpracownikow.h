@@ -12,12 +12,19 @@ class ZatrudnijPracownikow : public QDialog
     Q_OBJECT
 
 public:
-    explicit ZatrudnijPracownikow(int indeks, QWidget *parent = 0);
+    explicit ZatrudnijPracownikow(int indeks, const QDate* data1, QWidget *parent = 0);
     ~ZatrudnijPracownikow();
     int detindeks;
+    const QDate* date;
 
 private slots:
     void on_Wstecz_clicked();
+
+    void on_Zatrudnij_clicked();
+
+    int Zatrudnij_doradcow();
+
+    int Zatrudnij_obsluge();
 
 private:
     Ui::ZatrudnijPracownikow *ui;

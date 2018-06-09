@@ -4,10 +4,11 @@
 
 extern QStackedWidget* stack;
 
-ZmienDanePrzyjecia::ZmienDanePrzyjecia(int indeks, QWidget *parent) :
+ZmienDanePrzyjecia::ZmienDanePrzyjecia(int indeks, const QDate* data1, QWidget *parent) :
     QDialog(parent),
     ui(new Ui::ZmienDanePrzyjecia),
-    detindeks(indeks)
+    detindeks(indeks),
+    date(data1)
 {
     ui->setupUi(this);
 }

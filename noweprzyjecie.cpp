@@ -31,14 +31,14 @@ void NowePrzyjecie::on_Utworz_clicked()
     if (data>QDate::currentDate())
     {
         QSqlQuery query;
-        query.exec("SELECT * FROM przyjecia where organizator='"+loginZalogowany+"' and data=STR_TO_DATE('"+data.toString("dd-MM-yyyy")+"',\"%d-%m-%Y\")");
+        query.exec("SELECT * FROM przyjecia where organizator='"+loginZalogowany+"' and data_wydarzenia=STR_TO_DATE('"+data.toString("dd-MM-yyyy")+"',\"%d-%m-%Y\")");
         if (query.next())
         {
             ui->Komunikat->setText("Organizujesz już w tym dniu przyjęcie");
         }
         else
         {
-            if (query.exec("INSERT INTO przyjecia (nazwa, organizator, data) values ('"+ui->Nazwa->text()+"', '"+loginZalogowany+"', STR_TO_DATE('"+data.toString("dd-MM-yyyy")+"',\"%d-%m-%Y\"));"))
+            if (query.exec("INSERT INTO przyjecia (nazwa, organizator, data_wydarzenia) values ('"+ui->Nazwa->text()+"', '"+loginZalogowany+"', STR_TO_DATE('"+data.toString("dd-MM-yyyy")+"',\"%d-%m-%Y\"));"))
             {
                 ui->Komunikat->setText("Przyjęcie utworzone");
             }

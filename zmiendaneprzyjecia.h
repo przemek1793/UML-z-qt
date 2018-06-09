@@ -12,9 +12,10 @@ class ZmienDanePrzyjecia : public QDialog
     Q_OBJECT
 
 public:
-    explicit ZmienDanePrzyjecia(int indeks, QWidget *parent = 0);
+    explicit ZmienDanePrzyjecia(int indeks, const QDate* data1, QWidget *parent = 0);
     ~ZmienDanePrzyjecia();
     int detindeks;
+    const QDate* date;
 
 private slots:
     void on_Wstecz_clicked();

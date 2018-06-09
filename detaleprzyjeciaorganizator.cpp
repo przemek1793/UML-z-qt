@@ -36,14 +36,14 @@ void DetalePrzyjeciaOrganizator::on_Wstecz_clicked()
 
 void DetalePrzyjeciaOrganizator::on_Zmien_clicked()
 {
-    ZmienDanePrzyjecia* zmiana=new ZmienDanePrzyjecia(detaleindeks);
+    ZmienDanePrzyjecia* zmiana=new ZmienDanePrzyjecia(detaleindeks, date);
     int zm=stack->addWidget(zmiana);
     stack->setCurrentIndex(zm);
 }
 
 void DetalePrzyjeciaOrganizator::on_Zatrudnij_clicked()
 {
-    ZatrudnijPracownikow* zatrudnij=new ZatrudnijPracownikow(detaleindeks);
+    ZatrudnijPracownikow* zatrudnij=new ZatrudnijPracownikow(detaleindeks, date);
     int zt=stack->addWidget(zatrudnij);
     stack->setCurrentIndex(zt);
 }
