@@ -17,7 +17,7 @@
    <item>
     <widget class="QLabel" name="Organizator">
      <property name="text">
-      <string>Przyjęcie organizowane przez użytkownika xx dnia xxx</string>
+      <string/>
      </property>
     </widget>
    </item>

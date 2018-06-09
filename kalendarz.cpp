@@ -28,7 +28,7 @@ Kalendarz::Kalendarz(QWidget *parent) :
     QSqlQuery query;
     if (typ=="Organizator")
     {
-        query.exec("SELECT data_wydarzenia FROM `przyjecia` WHERE organizator='"+loginZalogowany+"'");
+        query.exec("SELECT data_wydarzenia FROM przyjecia WHERE organizator='"+loginZalogowany+"'");
         while (query.next())
         {
             ui->KalendarzWidget->setDateTextFormat(QDate(query.value(0).toDate()),format);
@@ -36,7 +36,7 @@ Kalendarz::Kalendarz(QWidget *parent) :
     }
     else if (typ=="Doradca")
     {
-        query.exec("SELECT data_wydarzenia FROM `przyjecia` WHERE `zatrudnieni_doradcy` LIKE '%"+loginZalogowany+"'%");
+        query.exec("SELECT data_wydarzenia FROM przyjecia WHERE zatrudnieni_doradcy LIKE '%"+loginZalogowany+"%'");
         while (query.next())
         {
             ui->KalendarzWidget->setDateTextFormat(QDate(query.value(0).toDate()),format);
@@ -44,7 +44,7 @@ Kalendarz::Kalendarz(QWidget *parent) :
     }
     else if (typ=="Obsluga")
     {
-        query.exec("SELECT data_wydarzenia FROM `przyjecia` WHERE 'zatrudniona_obsluga' LIKE '%"+loginZalogowany+"'%");
+        query.exec("SELECT data_wydarzenia FROM przyjecia WHERE zatrudniona_obsluga LIKE '%"+loginZalogowany+"%'");
         while (query.next())
         {
             ui->KalendarzWidget->setDateTextFormat(QDate(query.value(0).toDate()),format);
