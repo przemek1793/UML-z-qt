@@ -1,6 +1,8 @@
 #include "detaleprzyjeciaorganizator.h"
 #include "ui_detaleprzyjeciaorganizator.h"
 #include <QStackedWidget>
+#include "zmiendaneprzyjecia.h"
+#include "zatrudnijpracownikow.h"
 
 extern QStackedWidget* stack;
 
@@ -30,4 +32,18 @@ void DetalePrzyjeciaOrganizator::on_Wstecz_clicked()
     stack->setCurrentIndex(kalendarzindeks);
     stack->removeWidget(this);
     this->~DetalePrzyjeciaOrganizator();
+}
+
+void DetalePrzyjeciaOrganizator::on_Zmien_clicked()
+{
+    ZmienDanePrzyjecia* zmiana=new ZmienDanePrzyjecia(detaleindeks);
+    int zm=stack->addWidget(zmiana);
+    stack->setCurrentIndex(zm);
+}
+
+void DetalePrzyjeciaOrganizator::on_Zatrudnij_clicked()
+{
+    ZatrudnijPracownikow* zatrudnij=new ZatrudnijPracownikow(detaleindeks);
+    int zt=stack->addWidget(zatrudnij);
+    stack->setCurrentIndex(zt);
 }

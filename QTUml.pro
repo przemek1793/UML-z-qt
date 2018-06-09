@@ -40,7 +40,8 @@ SOURCES += \
     detaleprzyjeciaorganizator.cpp \
     detaleprzyjeciaadmin.cpp \
     detaleprzyjeciapracownicy.cpp \
-    zmiendaneprzyjecia.cpp
+    zmiendaneprzyjecia.cpp \
+    zatrudnijpracownikow.cpp
 
 HEADERS += \
         mainwindow.h \
@@ -57,7 +58,8 @@ HEADERS += \
     detaleprzyjeciaorganizator.h \
     detaleprzyjeciaadmin.h \
     detaleprzyjeciapracownicy.h \
-    zmiendaneprzyjecia.h
+    zmiendaneprzyjecia.h \
+    zatrudnijpracownikow.h
 
 FORMS += \
         mainwindow.ui \
@@ -74,4 +76,5 @@ FORMS += \
     detaleprzyjeciaorganizator.ui \
     detaleprzyjeciaadmin.ui \
     detaleprzyjeciapracownicy.ui \
-    zmiendaneprzyjecia.ui
+    zmiendaneprzyjecia.ui \
+    zatrudnijpracownikow.ui

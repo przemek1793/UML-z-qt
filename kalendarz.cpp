@@ -93,6 +93,7 @@ void Kalendarz::on_KalendarzWidget_activated(const QDate &date) //jak 2 razy kli
         {
             DetalePrzyjeciaOrganizator* detale=new DetalePrzyjeciaOrganizator(&date, kalendarzindeks);
             int detal=stack->addWidget(detale);
+            detale->detaleindeks=detal;
             stack->setCurrentIndex(detal);
         }
         else if (typ=="Doradca"||typ=="Obsluga")
