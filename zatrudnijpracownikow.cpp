@@ -133,7 +133,6 @@ int ZatrudnijPracownikow::Zatrudnij_obsluge()
     query.exec("SELECT login FROM konta where typ='Obsluga'");
     while (query.next())
     {
-        nazwa=query.value(0).toString();
         QSqlQuery przyjecia;
         przyjecia.exec("SELECT * FROM przyjecia where odmowili_pracy like '%"+query.value(0).toString()+",%' and organizator="+loginZalogowany+" and data_wydarzenia=STR_TO_DATE('"+date->toString("dd-MM-yyyy")+"',\"%d-%m-%Y\")");
         if (przyjecia.size()<1)
@@ -157,6 +156,7 @@ int ZatrudnijPracownikow::Zatrudnij_obsluge()
                 if (ileobecny<minpracy||minpracy==-1)
                 {
                     //obecny ma póki co najmniej pracy
+                    nazwa=query.value(0).toString();
                     minpracy=ileobecny;
                 }
             }
@@ -164,7 +164,7 @@ int ZatrudnijPracownikow::Zatrudnij_obsluge()
     }
     if (minpracy<0)
     {
-        return -3; //brak dostępnych doradców
+        return -3; //brak dostępnej obsługi
     }
     else
     {
