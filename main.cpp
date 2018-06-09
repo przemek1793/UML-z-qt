@@ -17,6 +17,7 @@ int main(int argc, char *argv[])
     bool ok = db.open();
 
     QSqlQuery query;
+
     query.exec("SELECT * FROM konta");
     if (!query.next())
     {
@@ -25,7 +26,7 @@ int main(int argc, char *argv[])
     query.exec("SELECT * FROM przyjecia");
     if (!query.next())
     {
-        query.exec("CREATE TABLE `uml_qt`.`przyjecia` ( `nazwa` VARCHAR(40) NOT NULL , `organizator` VARCHAR(40) NOT NULL , `data` DATE NOT NULL , `zatrudniona obsluga` VARCHAR(400) NOT NULL , `zatrudnieni doradcy` VARCHAR(400) NOT NULL)");
+        query.exec("CREATE TABLE `uml_qt`.`przyjecia` ( `nazwa` VARCHAR(40) NOT NULL , `organizator` VARCHAR(40) NOT NULL , `data` DATE NOT NULL , `zatrudniona obsluga` VARCHAR(400) DEFAULT NULL , `zatrudnieni doradcy` VARCHAR(400) DEFAULT NULL, `odmowili pracy` VARCHAR(400) DEFAULT NULL)");
     }
     query.exec("SELECT * FROM wiadomosci");
     if (!query.next())
