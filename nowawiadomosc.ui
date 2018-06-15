@@ -43,6 +43,13 @@
     </widget>
    </item>
    <item>
+    <widget class="QLabel" name="komunikat">
+     <property name="text">
+      <string/>
+     </property>
+    </widget>
+   </item>
+   <item>
     <widget class="QPushButton" name="Wyslij">
      <property name="styleSheet">
       <string notr="true">background-color:white;</string>

@@ -93,3 +93,31 @@ void NowaWiadomosc::on_Wstecz_clicked()
     stack->removeWidget(this);
     this->~NowaWiadomosc();
 }
+
+void NowaWiadomosc::on_Wyslij_clicked()
+{
+    QString wiadomosc=ui->Tresc->toPlainText();
+    if (ui->Odbiorca->currentText()!="Nie masz do kogo wysłać wiadomości")
+    {
+        if (wiadomosc!="")
+        {
+             QSqlQuery query;
+             if (query.exec("INSERT INTO wiadomosci (nadawca, odbiorca, wiadomosc, data_wiadomości) values ('"+loginZalogowany+"', '"+ui->Odbiorca->currentText()+"', '"+wiadomosc+"', CURDATE());"))
+             {
+                 ui->komunikat->setText("Wiadomość wysłana");
+             }
+             else
+             {
+                 ui->komunikat->setText("Błąd przy wysyłaniu wiadomości");
+             }
+        }
+        else
+        {
+            ui->komunikat->setText("Nie możesz wysłać pustej wiadomości");
+        }
+    }
+    else
+    {
+       ui->komunikat->setText("Nie można wysłać wiadomości do nikogo");
+    }
+}
