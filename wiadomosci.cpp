@@ -3,6 +3,7 @@
 #include "nowawiadomosc.h"
 #include <QStackedWidget>
 #include <QtSql>
+#include "listawiadomosci.h"
 
 extern QStackedWidget* stack;
 extern int organizator, doradca, niezalogowany;
@@ -40,4 +41,10 @@ void Wiadomosci::on_Wyslij_clicked()
 {
     int nowa=stack->addWidget(new NowaWiadomosc());
     stack->setCurrentIndex(nowa);
+}
+
+void Wiadomosci::on_Sprawdz_clicked()
+{
+    int lista=stack->addWidget(new ListaWiadomosci());
+    stack->setCurrentIndex(lista);
 }

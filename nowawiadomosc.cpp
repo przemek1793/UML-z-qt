@@ -37,7 +37,7 @@ NowaWiadomosc::NowaWiadomosc(QWidget *parent) :
     }
     else if (typ=="Doradca")
     {
-        query.exec("SELECT zatrudnieni_doradcy FROM przyjecia where zatrudnieni_doradcy like '%"+loginZalogowany+",%'");//wszyscy pracujący dla niego doradcy
+        query.exec("SELECT zatrudnieni_doradcy FROM przyjecia where zatrudnieni_doradcy like '%"+loginZalogowany+",%'");//wszyscy pracujący z nim doradcy
         while (query.next())
         {
             QString obecny=query.value(0).toString();
@@ -52,7 +52,7 @@ NowaWiadomosc::NowaWiadomosc(QWidget *parent) :
                 }
             }
         }
-        query.exec("SELECT organizator FROM przyjecia where zatrudnieni_doradcy like '%"+loginZalogowany+",%'");//wszyscy pracujący dla niego doradcy
+        query.exec("SELECT organizator FROM przyjecia where zatrudnieni_doradcy like '%"+loginZalogowany+",%'");//wszyscy organizatorzy dla których pracuje
         while (query.next())
         {
             QString obecny=query.value(0).toString();

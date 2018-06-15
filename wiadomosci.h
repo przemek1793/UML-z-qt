@@ -20,6 +20,8 @@ private slots:
 
     void on_Wyslij_clicked();
 
+    void on_Sprawdz_clicked();
+
 private:
     Ui::Wiadomosci *ui;
 };

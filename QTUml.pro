@@ -42,7 +42,8 @@ SOURCES += \
     detaleprzyjeciapracownicy.cpp \
     zmiendaneprzyjecia.cpp \
     zatrudnijpracownikow.cpp \
-    nowawiadomosc.cpp
+    nowawiadomosc.cpp \
+    listawiadomosci.cpp
 
 HEADERS += \
         mainwindow.h \
@@ -61,7 +62,8 @@ HEADERS += \
     detaleprzyjeciapracownicy.h \
     zmiendaneprzyjecia.h \
     zatrudnijpracownikow.h \
-    nowawiadomosc.h
+    nowawiadomosc.h \
+    listawiadomosci.h
 
 FORMS += \
         mainwindow.ui \
@@ -80,4 +82,5 @@ FORMS += \
     detaleprzyjeciapracownicy.ui \
     zmiendaneprzyjecia.ui \
     zatrudnijpracownikow.ui \
-    nowawiadomosc.ui
+    nowawiadomosc.ui \
+    listawiadomosci.ui
