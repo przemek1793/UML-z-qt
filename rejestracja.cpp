@@ -27,7 +27,8 @@ void Rejestracja::on_Rejestruj_clicked()
 {
     std::string haslo=ui->Haslo->text().toLocal8Bit().constData();
     QSqlQuery query;
-    if (ui->Login->text()!="")
+    std::string login=ui->Login->text().toLocal8Bit().constData();
+    if (login!=""&&!contains_comma(login))
     {
         if (contains_digits(haslo))
         {
@@ -47,6 +48,6 @@ void Rejestracja::on_Rejestruj_clicked()
     }
     else
     {
-           ui->Komunikat->setText("Login nie może być pusty");
+           ui->Komunikat->setText("Login nie może być pusty i nie może zawierać przecinków");
     }
 }
