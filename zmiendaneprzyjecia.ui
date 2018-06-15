@@ -7,13 +7,20 @@
     <x>0</x>
     <y>0</y>
     <width>400</width>
-    <height>300</height>
+    <height>310</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string>Dialog</string>
   </property>
   <layout class="QVBoxLayout" name="verticalLayout">
+   <item>
+    <widget class="QLabel" name="Data">
+     <property name="text">
+      <string/>
+     </property>
+    </widget>
+   </item>
    <item>
     <widget class="QLabel" name="label_2">
      <property name="text">
@@ -40,20 +47,6 @@
       </size>
      </property>
     </spacer>
-   </item>
-   <item>
-    <widget class="QLabel" name="label_3">
-     <property name="text">
-      <string>Data przyjęcia</string>
-     </property>
-    </widget>
-   </item>
-   <item>
-    <widget class="QDateEdit" name="Data">
-     <property name="styleSheet">
-      <string notr="true">background-color:white;</string>
-     </property>
-    </widget>
    </item>
    <item>
     <spacer name="verticalSpacer_2">
@@ -105,7 +98,7 @@
    <item>
     <widget class="QLabel" name="obsluga">
      <property name="text">
-      <string>Zatrudniono xxx obsługi</string>
+      <string/>
      </property>
     </widget>
    </item>
