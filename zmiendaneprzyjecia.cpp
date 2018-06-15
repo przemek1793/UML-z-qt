@@ -26,7 +26,16 @@ ZmienDanePrzyjecia::ZmienDanePrzyjecia(int indeks, const QDate* data1, QWidget *
         ileObslugi=Listaobslugi.size()-1;
     }
     ui->obsluga->setText("Zatrudniono "+QString::number(ileObslugi)+" pracowników obsługi");
-    QStringList doradcy = query.value(2).toString().split(',');
+    QStringList ListaDoradcow = query.value(2).toString().split(',');
+    QString doradcy="Zatrudnieni doradcy: ";
+    for (int i=0;i<ListaDoradcow.size();i++)
+    {
+        if (ListaDoradcow.value(i)!="")
+        {
+           doradcy=doradcy+ListaDoradcow.value(i)+", ";
+        }
+    }
+    ui->doradcy->setText(doradcy);
 }
 
 ZmienDanePrzyjecia::~ZmienDanePrzyjecia()

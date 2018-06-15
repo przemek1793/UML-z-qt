@@ -64,7 +64,7 @@
    <item>
     <widget class="QLabel" name="doradcy">
      <property name="text">
-      <string>Zatrudniono xxx i zzz jako doradcow</string>
+      <string/>
      </property>
     </widget>
    </item>
