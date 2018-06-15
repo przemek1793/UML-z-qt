@@ -1,6 +1,7 @@
 #include "zmiendaneprzyjecia.h"
 #include "ui_zmiendaneprzyjecia.h"
 #include <QStackedWidget>
+#include <QtSql>
 
 extern QStackedWidget* stack;
 

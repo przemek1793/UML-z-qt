@@ -27,19 +27,26 @@ void Rejestracja::on_Rejestruj_clicked()
 {
     std::string haslo=ui->Haslo->text().toLocal8Bit().constData();
     QSqlQuery query;
-    if (contains_digits(haslo))
+    if (ui->Login->text()!="")
     {
-        if (query.exec("INSERT INTO konta (login, haslo, typ) values ('"+ui->Login->text()+"', '"+ui->Haslo->text()+"', 'Organizator');"))
+        if (contains_digits(haslo))
         {
-            ui->Komunikat->setText("Konto utworzone");
+            if (query.exec("INSERT INTO konta (login, haslo, typ) values ('"+ui->Login->text()+"', '"+ui->Haslo->text()+"', 'Organizator');"))
+            {
+                ui->Komunikat->setText("Konto utworzone");
+            }
+            else
+            {
+                ui->Komunikat->setText("Login już jest zajęty");
+            }
         }
         else
         {
-            ui->Komunikat->setText("Login już jest zajęty");
+            ui->Komunikat->setText("Hasło musi zawierać cyfre");
         }
     }
     else
     {
-        ui->Komunikat->setText("Hasło musi zawierać cyfre");
+           ui->Komunikat->setText("Login nie może być pusty");
     }
 }
