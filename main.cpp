@@ -33,6 +33,5 @@ int main(int argc, char *argv[])
     {
         query.exec("CREATE TABLE `uml_qt`.`wiadomosci` ( `nadawca` VARCHAR(40) NOT NULL , `odbiorca` VARCHAR(40) NOT NULL , `wiadomosc` VARCHAR(800) NOT NULL , `data_wiadomości` DATE NOT NULL )");
     }
-
     return aplikacja.exec();
 }

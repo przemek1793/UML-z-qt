@@ -27,7 +27,6 @@ NowaWiadomosc::NowaWiadomosc(QWidget *parent) :
             for (int i=0;i<list1.size();i++)
             {
                 obecny=list1.value(i);
-                obecny.remove(0,1);
                 if (obecny!="")
                 {
                    lista.insert(obecny);
@@ -45,7 +44,6 @@ NowaWiadomosc::NowaWiadomosc(QWidget *parent) :
             for (int i=0;i<list1.size();i++)
             {
                 obecny=list1.value(i);
-                obecny.remove(0,1);
                 if (obecny!="" && obecny!=loginZalogowany)
                 {
                    lista.insert(obecny);

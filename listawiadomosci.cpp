@@ -26,6 +26,8 @@ ListaWiadomosci::ListaWiadomosci(QWidget *parent) :
         lista.insert(ObecnyKlucz,query.value(2).toString());
         ui->Lista->addItem(ObecnyKlucz);
     }
+    if (ui->Lista->count()==0)
+        ui->Lista->addItem("Nie masz wiadomości");
 }
 
 ListaWiadomosci::~ListaWiadomosci()
