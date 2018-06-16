@@ -8,7 +8,7 @@
 extern QStackedWidget* stack;
 extern int wiadomosci;
 extern QString loginZalogowany;
-QMap<QString, QString> lista;
+QMap<QString, QString> listaWiadomosci;
 
 ListaWiadomosci::ListaWiadomosci(QWidget *parent) :
     QDialog(parent),
@@ -23,7 +23,7 @@ ListaWiadomosci::ListaWiadomosci(QWidget *parent) :
     {
         QString ObecnyKlucz="wiadomość"+QString::number(ile)+": od "+query.value(0).toString()+" dnia"+query.value(1).toString();
         ile++;
-        lista.insert(ObecnyKlucz,query.value(2).toString());
+        listaWiadomosci.insert(ObecnyKlucz,query.value(2).toString());
         ui->Lista->addItem(ObecnyKlucz);
     }
     if (ui->Lista->count()==0)
@@ -44,5 +44,5 @@ void ListaWiadomosci::on_Wstecz_clicked()
 
 void ListaWiadomosci::on_Lista_activated(const QString &arg1)
 {
-    ui->Tresc->setPlainText(lista.value(arg1));
+    ui->Tresc->setPlainText(listaWiadomosci.value(arg1));
 }
