@@ -61,7 +61,7 @@
       <string notr="true">background-color:white;</string>
      </property>
      <property name="text">
-      <string>Zmien dane wybranego konta</string>
+      <string>Zmien dane wybranego przyjęcia</string>
      </property>
     </widget>
    </item>
@@ -71,7 +71,7 @@
       <string notr="true">background-color:white;</string>
      </property>
      <property name="text">
-      <string>Usuń wybrane konto</string>
+      <string>Usuń wybrane przyjęcie</string>
      </property>
     </widget>
    </item>

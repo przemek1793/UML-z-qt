@@ -185,26 +185,26 @@ void ListaUzytkownikow::on_Usun_clicked()
 void ListaUzytkownikow::Wyslij_wiadomosc_o_usunieciu_dla_doradcy(QString doradca, const QDate* date)
 {
     QSqlQuery query;
-    query.exec("INSERT INTO wiadomosci (nadawca, odbiorca, wiadomosc, data_wiadomości) VALUES ('System', '"+doradca+"', 'Przyjecie dnia "+date->toString("dd-MM-yyyy")+" przy ktorym pracowales zostalo odwolane' , STR_TO_DATE('"+date->toString("dd-MM-yyyy")+"',\"%d-%m-%Y\"))");
+    query.exec("INSERT INTO wiadomosci (nadawca, odbiorca, wiadomosc, data_wiadomości) VALUES ('System', '"+doradca+"', 'Przyjecie dnia "+date->toString("dd-MM-yyyy")+" przy ktorym pracowales zostalo odwolane' , CURRENT_DATE)");
 }
 
 void ListaUzytkownikow::Wyslij_wiadomosc_o_usunieciu_innego_doradcy(QString doradca, const QDate* date)
 {
     QSqlQuery query;
-    query.exec("INSERT INTO wiadomosci (nadawca, odbiorca, wiadomosc, data_wiadomości) VALUES ('System', '"+doradca+"', 'Jeden z doradcow pracujacych z toba przy przyjeciu dnia "+date->toString("dd-MM-yyyy")+" stracil konto' , STR_TO_DATE('"+date->toString("dd-MM-yyyy")+"',\"%d-%m-%Y\"))");
+    query.exec("INSERT INTO wiadomosci (nadawca, odbiorca, wiadomosc, data_wiadomości) VALUES ('System', '"+doradca+"', 'Jeden z doradcow pracujacych z toba przy przyjeciu dnia "+date->toString("dd-MM-yyyy")+" stracil konto' ,CURRENT_DATE)");
 }
 
 
 void ListaUzytkownikow::Wyslij_wiadomosc_o_usunieciu_dla_organizatora(QString organizator, const QDate* date)
 {
     QSqlQuery query;
-    query.exec("INSERT INTO wiadomosci (nadawca, odbiorca, wiadomosc, data_wiadomości) VALUES ('System', '"+organizator+"', 'Konto jednego z doradcow pracujacych przy twoim przyjeciu dnia "+date->toString("dd-MM-yyyy")+" zostalo usuniete', STR_TO_DATE('"+date->toString("dd-MM-yyyy")+"',\"%d-%m-%Y\"))");
+    query.exec("INSERT INTO wiadomosci (nadawca, odbiorca, wiadomosc, data_wiadomości) VALUES ('System', '"+organizator+"', 'Konto jednego z doradcow pracujacych przy twoim przyjeciu dnia "+date->toString("dd-MM-yyyy")+" zostalo usuniete', CURRENT_DATE)");
 }
 
 void ListaUzytkownikow::Wyslij_wiadomosc_o_usunieciu_dla_organizatora_obsluga(QString organizator, const QDate* date)
 {
     QSqlQuery query;
-    query.exec("INSERT INTO wiadomosci (nadawca, odbiorca, wiadomosc, data_wiadomości) VALUES ('System', '"+organizator+"', 'Konto jednego z pracownikow obslugi pracujacych przy twoim przyjeciu dnia "+date->toString("dd-MM-yyyy")+" zostalo usuniete', STR_TO_DATE('"+date->toString("dd-MM-yyyy")+"',\"%d-%m-%Y\"))");
+    query.exec("INSERT INTO wiadomosci (nadawca, odbiorca, wiadomosc, data_wiadomości) VALUES ('System', '"+organizator+"', 'Konto jednego z pracownikow obslugi pracujacych przy twoim przyjeciu dnia "+date->toString("dd-MM-yyyy")+" zostalo usuniete', CURRENT_DATE)");
 }
 
 void ListaUzytkownikow::on_NoweKonto_clicked()

@@ -123,7 +123,7 @@ void ZmienDanePrzyjecia::zwolnij_Doradce(QString doradca)
     QString pracownicy=query.value(0).toString();
     pracownicy=pracownicy.remove(doradca+",");
     query.exec("UPDATE przyjecia SET zatrudnieni_doradcy='"+pracownicy+"' WHERE data_wydarzenia=STR_TO_DATE('"+date->toString("dd-MM-yyyy")+"',\"%d-%m-%Y\") and zatrudnieni_doradcy LIKE '%"+doradca+",%'");
-    query.exec("INSERT INTO wiadomosci (nadawca, odbiorca, wiadomosc, data_wiadomości) VALUES ('System', '"+doradca+"', 'Zostales zwolniony z przyjecia organizowanego dnia "+date->toString("dd-MM-yyyy")+"', STR_TO_DATE('"+date->toString("dd-MM-yyyy")+"',\"%d-%m-%Y\"))");
+    query.exec("INSERT INTO wiadomosci (nadawca, odbiorca, wiadomosc, data_wiadomości) VALUES ('System', '"+doradca+"', 'Zostales zwolniony z przyjecia organizowanego dnia "+date->toString("dd-MM-yyyy")+"', CURRENT_DATE)");
 }
 
 void ZmienDanePrzyjecia::zwolnij_Obsluge(int ilu)

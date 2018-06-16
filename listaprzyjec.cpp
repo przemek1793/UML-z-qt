@@ -54,6 +54,7 @@ void ListaPrzyjec::on_ZmienDane_clicked()
         if (query.exec("UPDATE przyjecia SET nazwa='"+ui->Nazwa->text()+"' where organizator='"+dane.value(0)+"' AND data_wydarzenia=STR_TO_DATE('"+dane.value(1)+"',\"%Y-%m-%d\")"))
         {
             ui->Komunikat->setText("Zmieniono nazwę przyjęcia");
+            query.exec("INSERT INTO wiadomosci (nadawca, odbiorca, wiadomosc, data_wiadomości) VALUES ('System', '"+dane.value(0)+"', 'Zmieniono nazwe przyjecia organizowanego dnia "+dane.value(1)+"', CURRENT_DATE");
         }
         else
         {
