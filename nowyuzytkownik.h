@@ -18,6 +18,18 @@ public:
 private slots:
     void on_Wstecz_clicked();
 
+    void on_Rejestruj_clicked();
+
+    bool contains_digits(const std::string &str)
+    {
+        return !(str.find_first_of("0123456789") == std::string::npos);
+    }
+
+    bool contains_comma(const std::string &str)
+    {
+        return !(str.find_first_of(",") == std::string::npos);
+    }
+
 private:
     Ui::NowyUzytkownik *ui;
 };
