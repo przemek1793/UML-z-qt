@@ -55,6 +55,13 @@ void ListaPrzyjec::on_ZmienDane_clicked()
         {
             ui->Komunikat->setText("Zmieniono nazwę przyjęcia");
             query.exec("INSERT INTO wiadomosci (nadawca, odbiorca, wiadomosc, data_wiadomości) VALUES ('System', '"+dane.value(0)+"', 'Zmieniono nazwe przyjecia organizowanego dnia "+dane.value(1)+"', CURRENT_DATE");
+
+            listap.remove(aktualnyKlucz);
+            ui->Lista->removeItem(ui->Lista->findText(aktualnyKlucz));
+            aktualnyKlucz="Przyjęcie "+ui->Nazwa->text()+" dnia "+dane.value(1);
+            QString wartosc=dane.value(0)+","+dane.value(1)+","+ui->Nazwa->text();
+            listap.insert(aktualnyKlucz,wartosc); //lista - klucze to stringi z comboboxa, wartości to organizator+,+data,+nazwa
+            ui->Lista->addItem(aktualnyKlucz);
         }
         else
         {
