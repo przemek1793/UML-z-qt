@@ -78,11 +78,23 @@ void ListaPrzyjec::on_Usun_clicked()
 {
     QSqlQuery query;
     QStringList dane = listap.value(aktualnyKlucz).split(",");
+    query.exec("SELECT zatrudnieni_doradcy FROM `przyjecia` where organizator='"+dane.value(0)+"' AND data_wydarzenia=STR_TO_DATE('"+dane.value(1)+"',\"%Y-%m-%d\")");
+    query.first();
+    QStringList listaD = query.value(0).toString().split(",");
     if (query.exec("DELETE FROM przyjecia  where organizator='"+dane.value(0)+"' AND data_wydarzenia=STR_TO_DATE('"+dane.value(1)+"',\"%Y-%m-%d\")"))
     {
         ui->Komunikat->setText("Usunięto przyjęcie");
         listap.remove(aktualnyKlucz);
         ui->Lista->removeItem(ui->Lista->findText(aktualnyKlucz));
+        query.exec("INSERT INTO wiadomosci (nadawca, odbiorca, wiadomosc, data_wiadomości) VALUES ('System', '"+dane.value(0)+"', 'Usunieto przyjecie organizowane dnia "+dane.value(1)+"', CURRENT_DATE)");
+        for (int i=0;i<listaD.size();i++)
+        {
+            QString aktualny=listaD.value(i);
+            if (aktualny!="")
+            {
+                query.exec("INSERT INTO wiadomosci (nadawca, odbiorca, wiadomosc, data_wiadomości) VALUES ('System', '"+aktualny+"', 'Usunieto przyjecie organizowane dnia "+dane.value(1)+"', CURRENT_DATE)");
+            }
+        }
     }
     else
     {
