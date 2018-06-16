@@ -67,6 +67,16 @@
     </widget>
    </item>
    <item>
+    <widget class="QPushButton" name="Usun">
+     <property name="styleSheet">
+      <string notr="true">background-color:white;</string>
+     </property>
+     <property name="text">
+      <string>Usuń wybrane konto</string>
+     </property>
+    </widget>
+   </item>
+   <item>
     <widget class="QPushButton" name="NoweKonto">
      <property name="styleSheet">
       <string notr="true">background-color:white;</string>

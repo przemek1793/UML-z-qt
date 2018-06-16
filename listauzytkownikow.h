@@ -20,6 +20,8 @@ private slots:
 
     void on_Lista_activated(const QString &arg1);
 
+    void on_ZmienDane_clicked();
+
 private:
     Ui::ListaUzytkownikow *ui;
 };
