@@ -22,6 +22,8 @@ private slots:
 
     void on_Zmiana_clicked();
 
+    void zwolnij_Doradce(QString doradca);
+
 private:
     Ui::ZmienDanePrzyjecia *ui;
 };

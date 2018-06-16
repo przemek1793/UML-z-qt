@@ -62,7 +62,6 @@ void DetalePrzyjeciaPracownicy::on_Zrezygnuj_clicked()
             zrezygnowali.append(loginZalogowany+",");
             pracownicy=query.value(0).toString();
             pracownicy=pracownicy.remove(loginZalogowany+",");
-            QString asd=date->toString("dd-MM-yyyy");
             query.exec("UPDATE przyjecia SET odmowili_pracy='"+zrezygnowali+"' WHERE data_wydarzenia=STR_TO_DATE('"+date->toString("dd-MM-yyyy")+"',\"%d-%m-%Y\") and zatrudnieni_doradcy LIKE '%"+loginZalogowany+",%'");
             query.exec("UPDATE przyjecia SET zatrudnieni_doradcy='"+pracownicy+"' WHERE data_wydarzenia=STR_TO_DATE('"+date->toString("dd-MM-yyyy")+"',\"%d-%m-%Y\") and zatrudnieni_doradcy LIKE '%"+loginZalogowany+",%'");
             ui->Komunikat->setText("Udało się zrezygnować");

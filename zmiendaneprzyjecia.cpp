@@ -72,15 +72,35 @@ void ZmienDanePrzyjecia::on_Zmiana_clicked()
     }
     if (ui->DoradcyDoZwolnienia->text()!="")
     {
+        bool success=true;
         QStringList ListaDoradcowDoZwolnienia=ui->DoradcyDoZwolnienia->text().split(',');
         for (int i=0;i<ListaDoradcowDoZwolnienia.size();i++)
         {
-            QString aa=ListaDoradcowDoZwolnienia.value(i);
             if (!ListaDoradcow.contains(ListaDoradcowDoZwolnienia.value(i))) //wpisano nazwe której nie ma na liście doradców
             {
                 komunikat=komunikat+"Doradca "+ListaDoradcowDoZwolnienia.value(i)+" nie pracuje przy tym przyjęciu. ";
+                success=false;
             }
+        }
+        if(success)
+        {
+            for (int i=0;i<ListaDoradcowDoZwolnienia.size();i++)
+            {
+                zwolnij_Doradce(ListaDoradcowDoZwolnienia.value(i));
+            }
+            komunikat=komunikat+"Udało się zwolnić wybranych doradców ";
         }
     }
     ui->komunikat->setText(komunikat);
+}
+
+void ZmienDanePrzyjecia::zwolnij_Doradce(QString doradca)
+{
+    QSqlQuery query;
+    query.exec("SELECT zatrudnieni_doradcy FROM przyjecia WHERE data_wydarzenia=STR_TO_DATE('"+date->toString("dd-MM-yyyy")+"',\"%d-%m-%Y\") and zatrudnieni_doradcy LIKE '%"+doradca+",%'");
+    query.first();
+    QString pracownicy=query.value(0).toString();
+    pracownicy=pracownicy.remove(doradca+",");
+    query.exec("UPDATE przyjecia SET zatrudnieni_doradcy='"+pracownicy+"' WHERE data_wydarzenia=STR_TO_DATE('"+date->toString("dd-MM-yyyy")+"',\"%d-%m-%Y\") and zatrudnieni_doradcy LIKE '%"+doradca+",%'");
+    query.exec("INSERT INTO wiadomosci (nadawca, odbiorca, wiadomosc, data_wiadomości) VALUES ('System', '"+doradca+"', 'Zostales zwolniony z przyjecia organizowanego dnia "+date->toString("dd-MM-yyyy")+"', STR_TO_DATE('"+date->toString("dd-MM-yyyy")+"',\"%d-%m-%Y\"))");
 }
