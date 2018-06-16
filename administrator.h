@@ -20,6 +20,8 @@ private slots:
 
     void on_Konta_clicked();
 
+    void on_Przyjecia_clicked();
+
 private:
     Ui::Administrator *ui;
 };

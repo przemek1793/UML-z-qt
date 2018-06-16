@@ -3,6 +3,7 @@
 #include <QStackedWidget>
 #include <QtSql>
 #include "listauzytkownikow.h"
+#include "listaprzyjec.h"
 
 extern QStackedWidget* stack;
 extern int niezalogowany;
@@ -29,4 +30,11 @@ void Administrator::on_Konta_clicked()
     ListaUzytkownikow* lista=new ListaUzytkownikow();
     int konta=stack->addWidget(lista);
     stack->setCurrentIndex(konta);
+}
+
+void Administrator::on_Przyjecia_clicked()
+{
+    ListaPrzyjec* lista=new ListaPrzyjec();
+    int przyjecia=stack->addWidget(lista);
+    stack->setCurrentIndex(przyjecia);
 }

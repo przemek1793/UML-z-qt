@@ -15,6 +15,9 @@ public:
     explicit ListaPrzyjec(QWidget *parent = 0);
     ~ListaPrzyjec();
 
+private slots:
+    void on_Wstecz_clicked();
+
 private:
     Ui::ListaPrzyjec *ui;
 };
