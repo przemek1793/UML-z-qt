@@ -18,6 +18,8 @@ public:
 private slots:
     void on_Wyloguj_clicked();
 
+    void on_Konta_clicked();
+
 private:
     Ui::Administrator *ui;
 };
