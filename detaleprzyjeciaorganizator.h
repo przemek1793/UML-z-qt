@@ -25,6 +25,8 @@ private slots:
 
     void on_Zatrudnij_clicked();
 
+    void on_Usun_clicked();
+
 private:
     Ui::DetalePrzyjeciaOrganizator *ui;
 };
