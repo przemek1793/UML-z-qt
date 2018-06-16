@@ -60,9 +60,9 @@ void ZatrudnijPracownikow::on_Zatrudnij_clicked()
             else
             {
                 QString ile=QString::number(i);
-                QString komu=ui->Komunikat->text();
-                komu.append("Udało się zatrudnić "+ile+" obsługi.");
-                ui->Komunikat->setText(komu);
+                QString komunikat=ui->Komunikat->text();
+                komunikat.append("Udało się zatrudnić "+ile+" obsługi.");
+                ui->Komunikat->setText(komunikat);
                 break;
             }
         }
@@ -118,7 +118,7 @@ int ZatrudnijPracownikow::Zatrudnij_doradcow()
         QString zatrudnienieni=query.value(0).toString();
         if (zatrudnienieni=="zatrudnieni_doradcy")
             zatrudnienieni="";
-        zatrudnienieni.append(" "+nazwa+",");
+        zatrudnienieni.append(nazwa+",");
         query.exec("UPDATE przyjecia SET zatrudnieni_doradcy='"+zatrudnienieni+"' where data_wydarzenia=STR_TO_DATE('"+date->toString("dd-MM-yyyy")+"',\"%d-%m-%Y\")");
         return 1; //udało sie
     }
@@ -173,7 +173,7 @@ int ZatrudnijPracownikow::Zatrudnij_obsluge()
         QString zatrudnienieni=query.value(0).toString();
         if (zatrudnienieni=="zatrudniona_obsluga")
             zatrudnienieni="";
-        zatrudnienieni.append(" "+nazwa+",");
+        zatrudnienieni.append(nazwa+",");
         query.exec("UPDATE przyjecia SET zatrudniona_obsluga='"+zatrudnienieni+"' where data_wydarzenia=STR_TO_DATE('"+date->toString("dd-MM-yyyy")+"',\"%d-%m-%Y\")");
         return 1; //udało sie
     }

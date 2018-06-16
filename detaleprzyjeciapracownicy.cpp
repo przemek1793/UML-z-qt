@@ -24,11 +24,11 @@ DetalePrzyjeciaPracownicy::DetalePrzyjeciaPracownicy(const QDate *date1, int ind
     QSqlQuery query;
     if (typ=="Doradca")
     {
-        query.exec("SELECT * FROM przyjecia WHERE data_wydarzenia=STR_TO_DATE('"+date->toString("dd-MM-yyyy")+"',\"%d-%m-%Y\") and zatrudnieni_doradcy LIKE '%"+loginZalogowany+"%'");
+        query.exec("SELECT * FROM przyjecia WHERE data_wydarzenia=STR_TO_DATE('"+date->toString("dd-MM-yyyy")+"',\"%d-%m-%Y\") and zatrudnieni_doradcy LIKE '%"+loginZalogowany+",%'");
     }
     else if (typ=="Obsluga")
     {
-        query.exec("SELECT * FROM przyjecia WHERE data_wydarzenia=STR_TO_DATE('"+date->toString("dd-MM-yyyy")+"',\"%d-%m-%Y\") and zatrudniona_obsluga LIKE '%"+loginZalogowany+"%'");
+        query.exec("SELECT * FROM przyjecia WHERE data_wydarzenia=STR_TO_DATE('"+date->toString("dd-MM-yyyy")+"',\"%d-%m-%Y\") and zatrudniona_obsluga LIKE '%"+loginZalogowany+",%'");
     }
     if (query.next())
     {
@@ -55,30 +55,30 @@ void DetalePrzyjeciaPracownicy::on_Zrezygnuj_clicked()
     QString zrezygnowali="";
     if (typ=="Doradca")
     {
-        query.exec("SELECT zatrudnieni_doradcy, odmowili_pracy FROM przyjecia WHERE data_wydarzenia=STR_TO_DATE('"+date->toString("dd-MM-yyyy")+"',\"%d-%m-%Y\") and zatrudnieni_doradcy LIKE '%"+loginZalogowany+"%'");
+        query.exec("SELECT zatrudnieni_doradcy, odmowili_pracy FROM przyjecia WHERE data_wydarzenia=STR_TO_DATE('"+date->toString("dd-MM-yyyy")+"',\"%d-%m-%Y\") and zatrudnieni_doradcy LIKE '%"+loginZalogowany+",%'");
         if (query.next())
         {
             zrezygnowali=query.value(1).toString();
-            zrezygnowali.append(" "+loginZalogowany+",");
+            zrezygnowali.append(loginZalogowany+",");
             pracownicy=query.value(0).toString();
-            pracownicy=pracownicy.remove(loginZalogowany+", ");
+            pracownicy=pracownicy.remove(loginZalogowany+",");
             QString asd=date->toString("dd-MM-yyyy");
-            query.exec("UPDATE przyjecia SET odmowili_pracy='"+zrezygnowali+"' WHERE data_wydarzenia=STR_TO_DATE('"+date->toString("dd-MM-yyyy")+"',\"%d-%m-%Y\") and zatrudnieni_doradcy LIKE '%"+loginZalogowany+"%'");
-            query.exec("UPDATE przyjecia SET zatrudnieni_doradcy='"+pracownicy+"' WHERE data_wydarzenia=STR_TO_DATE('"+date->toString("dd-MM-yyyy")+"',\"%d-%m-%Y\") and zatrudnieni_doradcy LIKE '%"+loginZalogowany+"%'");
+            query.exec("UPDATE przyjecia SET odmowili_pracy='"+zrezygnowali+"' WHERE data_wydarzenia=STR_TO_DATE('"+date->toString("dd-MM-yyyy")+"',\"%d-%m-%Y\") and zatrudnieni_doradcy LIKE '%"+loginZalogowany+",%'");
+            query.exec("UPDATE przyjecia SET zatrudnieni_doradcy='"+pracownicy+"' WHERE data_wydarzenia=STR_TO_DATE('"+date->toString("dd-MM-yyyy")+"',\"%d-%m-%Y\") and zatrudnieni_doradcy LIKE '%"+loginZalogowany+",%'");
             ui->Komunikat->setText("Udało się zrezygnować");
         }
     }
     else if (typ=="Obsluga")
     {
-        query.exec("SELECT zatrudniona_obsluga, odmowili_pracy FROM przyjecia WHERE data_wydarzenia=STR_TO_DATE('"+date->toString("dd-MM-yyyy")+"',\"%d-%m-%Y\") and zatrudniona_obsluga LIKE '%"+loginZalogowany+"%'");
+        query.exec("SELECT zatrudniona_obsluga, odmowili_pracy FROM przyjecia WHERE data_wydarzenia=STR_TO_DATE('"+date->toString("dd-MM-yyyy")+"',\"%d-%m-%Y\") and zatrudniona_obsluga LIKE '%"+loginZalogowany+",%'");
         if (query.next())
         {
             zrezygnowali=query.value(1).toString();
-            zrezygnowali.append(" "+loginZalogowany+",");
+            zrezygnowali.append(loginZalogowany+",");
             pracownicy=query.value(0).toString();
-            pracownicy=pracownicy.remove(loginZalogowany+", ");
-            query.exec("UPDATE przyjecia SET odmowili_pracy='"+zrezygnowali+"' WHERE data_wydarzenia=STR_TO_DATE('"+date->toString("dd-MM-yyyy")+"',\"%d-%m-%Y\") and zatrudniona_obsluga LIKE '%"+loginZalogowany+"%'");
-            query.exec("UPDATE przyjecia SET zatrudniona_obsluga='"+pracownicy+"' WHERE data_wydarzenia=STR_TO_DATE('"+date->toString("dd-MM-yyyy")+"',\"%d-%m-%Y\") and zatrudniona_obsluga LIKE '%"+loginZalogowany+"%'");
+            pracownicy=pracownicy.remove(loginZalogowany+",");
+            query.exec("UPDATE przyjecia SET odmowili_pracy='"+zrezygnowali+"' WHERE data_wydarzenia=STR_TO_DATE('"+date->toString("dd-MM-yyyy")+"',\"%d-%m-%Y\") and zatrudniona_obsluga LIKE '%"+loginZalogowany+",%'");
+            query.exec("UPDATE przyjecia SET zatrudniona_obsluga='"+pracownicy+"' WHERE data_wydarzenia=STR_TO_DATE('"+date->toString("dd-MM-yyyy")+"',\"%d-%m-%Y\") and zatrudniona_obsluga LIKE '%"+loginZalogowany+",%'");
             ui->Komunikat->setText("Udało się zrezygnować");
         }
     }

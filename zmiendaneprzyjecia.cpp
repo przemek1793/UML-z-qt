@@ -6,6 +6,7 @@
 extern QStackedWidget* stack;
 extern QString loginZalogowany;
 QString nazwaPrzyjecia;
+QStringList ListaDoradcow;
 
 ZmienDanePrzyjecia::ZmienDanePrzyjecia(int indeks, const QDate* data1, QWidget *parent) :
     QDialog(parent),
@@ -28,7 +29,7 @@ ZmienDanePrzyjecia::ZmienDanePrzyjecia(int indeks, const QDate* data1, QWidget *
         ileObslugi=Listaobslugi.size()-1;
     }
     ui->obsluga->setText("Zatrudniono "+QString::number(ileObslugi)+" pracowników obsługi");
-    QStringList ListaDoradcow = query.value(2).toString().split(',');
+    ListaDoradcow = query.value(2).toString().split(",");
     QString doradcy="Zatrudnieni doradcy: ";
     for (int i=0;i<ListaDoradcow.size();i++)
     {
@@ -37,6 +38,8 @@ ZmienDanePrzyjecia::ZmienDanePrzyjecia(int indeks, const QDate* data1, QWidget *
            doradcy=doradcy+ListaDoradcow.value(i)+", ";
         }
     }
+    if (doradcy!="Zatrudnieni doradcy: ")
+        doradcy.remove(doradcy.size()-2,2); //usuń przecinki z końca komunikatu
     ui->doradcy->setText(doradcy);
 }
 
@@ -54,17 +57,30 @@ void ZmienDanePrzyjecia::on_Wstecz_clicked()
 
 void ZmienDanePrzyjecia::on_Zmiana_clicked()
 {
-    ui->komunikat->setText("");
+    QString komunikat="";
     QSqlQuery query;
     if (ui->Nazwa->text()!=nazwaPrzyjecia) //nowa nazwa przyjęcia
     {
         if (query.exec("UPDATE przyjecia SET nazwa='"+ui->Nazwa->text()+"' where organizator='"+loginZalogowany+"' and data_wydarzenia=STR_TO_DATE('"+date->toString("dd-MM-yyyy")+"',\"%d-%m-%Y\")"))
         {
-            ui->komunikat->setText("Zmieniono nazwę przyjęcia.");
+            komunikat="Zmieniono nazwę przyjęcia. ";
         }
         else
         {
-            ui->komunikat->setText("Błąd przy zmianie nazwy przyjęcia.");
+            komunikat="Błąd przy zmianie nazwy przyjęcia. ";
         }
     }
+    if (ui->DoradcyDoZwolnienia->text()!="")
+    {
+        QStringList ListaDoradcowDoZwolnienia=ui->DoradcyDoZwolnienia->text().split(',');
+        for (int i=0;i<ListaDoradcowDoZwolnienia.size();i++)
+        {
+            QString aa=ListaDoradcowDoZwolnienia.value(i);
+            if (!ListaDoradcow.contains(ListaDoradcowDoZwolnienia.value(i))) //wpisano nazwe której nie ma na liście doradców
+            {
+                komunikat=komunikat+"Doradca "+ListaDoradcowDoZwolnienia.value(i)+" nie pracuje przy tym przyjęciu. ";
+            }
+        }
+    }
+    ui->komunikat->setText(komunikat);
 }
