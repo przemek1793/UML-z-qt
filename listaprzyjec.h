@@ -18,6 +18,8 @@ public:
 private slots:
     void on_Wstecz_clicked();
 
+    void on_Lista_activated(const QString &arg1);
+
 private:
     Ui::ListaPrzyjec *ui;
 };
