@@ -73,3 +73,19 @@ void ListaPrzyjec::on_ZmienDane_clicked()
         ui->Komunikat->setText("Nie możesz zmienić nazwy przyjęcia na taką samą");
     }
 }
+
+void ListaPrzyjec::on_Usun_clicked()
+{
+    QSqlQuery query;
+    QStringList dane = listap.value(aktualnyKlucz).split(",");
+    if (query.exec("DELETE FROM przyjecia  where organizator='"+dane.value(0)+"' AND data_wydarzenia=STR_TO_DATE('"+dane.value(1)+"',\"%Y-%m-%d\")"))
+    {
+        ui->Komunikat->setText("Usunięto przyjęcie");
+        listap.remove(aktualnyKlucz);
+        ui->Lista->removeItem(ui->Lista->findText(aktualnyKlucz));
+    }
+    else
+    {
+        ui->Komunikat->setText("Błąd przy usuwaniu przyjęcia");
+    }
+}

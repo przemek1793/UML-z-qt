@@ -22,6 +22,8 @@ private slots:
 
     void on_ZmienDane_clicked();
 
+    void on_Usun_clicked();
+
 private:
     Ui::ListaPrzyjec *ui;
 };
