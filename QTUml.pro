@@ -45,7 +45,8 @@ SOURCES += \
     nowawiadomosc.cpp \
     listawiadomosci.cpp \
     listaprzyjec.cpp \
-    listauzytkownikow.cpp
+    listauzytkownikow.cpp \
+    nowyuzytkownik.cpp
 
 HEADERS += \
         mainwindow.h \
@@ -67,7 +68,8 @@ HEADERS += \
     nowawiadomosc.h \
     listawiadomosci.h \
     listaprzyjec.h \
-    listauzytkownikow.h
+    listauzytkownikow.h \
+    nowyuzytkownik.h
 
 FORMS += \
         mainwindow.ui \
@@ -89,4 +91,5 @@ FORMS += \
     nowawiadomosc.ui \
     listawiadomosci.ui \
     listaprzyjec.ui \
-    listauzytkownikow.ui
+    listauzytkownikow.ui \
+    nowyuzytkownik.ui

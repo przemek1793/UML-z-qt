@@ -3,6 +3,7 @@
 #include <QStackedWidget>
 #include <QtSql>
 #include <QMap>
+#include "nowyuzytkownik.h"
 
 extern QStackedWidget* stack;
 extern int administrator;
@@ -204,4 +205,13 @@ void ListaUzytkownikow::Wyslij_wiadomosc_o_usunieciu_dla_organizatora_obsluga(QS
 {
     QSqlQuery query;
     query.exec("INSERT INTO wiadomosci (nadawca, odbiorca, wiadomosc, data_wiadomości) VALUES ('System', '"+organizator+"', 'Konto jednego z pracownikow obslugi pracujacych przy twoim przyjeciu dnia "+date->toString("dd-MM-yyyy")+" zostalo usuniete', STR_TO_DATE('"+date->toString("dd-MM-yyyy")+"',\"%d-%m-%Y\"))");
+}
+
+void ListaUzytkownikow::on_NoweKonto_clicked()
+{
+    NowyUzytkownik* nowy=new NowyUzytkownik();
+    int nowekonto=stack->addWidget(nowy);
+    stack->setCurrentIndex(nowekonto);
+    stack->removeWidget(this);
+    this->~ListaUzytkownikow();
 }

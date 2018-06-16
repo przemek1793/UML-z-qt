@@ -32,6 +32,8 @@ private slots:
 
     void Wyslij_wiadomosc_o_usunieciu_dla_organizatora_obsluga(QString doradca, const QDate* date);
 
+    void on_NoweKonto_clicked();
+
 private:
     Ui::ListaUzytkownikow *ui;
 };
