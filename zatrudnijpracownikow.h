@@ -26,7 +26,7 @@ private slots:
 
     int Zatrudnij_obsluge();
 
-    int Wyslij_wiadomosc_o_zatrudnieniu(QString doradca);
+    void Wyslij_wiadomosc_o_zatrudnieniu(QString doradca);
 
 private:
     Ui::ZatrudnijPracownikow *ui;

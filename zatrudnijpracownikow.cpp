@@ -173,7 +173,7 @@ int ZatrudnijPracownikow::Zatrudnij_obsluge()
     }
 }
 
-int ZatrudnijPracownikow::Wyslij_wiadomosc_o_zatrudnieniu(QString doradca)
+void ZatrudnijPracownikow::Wyslij_wiadomosc_o_zatrudnieniu(QString doradca)
 {
     QSqlQuery query;
     query.exec("INSERT INTO wiadomosci (nadawca, odbiorca, wiadomosc, data_wiadomości) VALUES ('System', '"+doradca+"', 'Zostales zatrudniony przy przyjeciu organizowanym dnia "+date->toString("dd-MM-yyyy")+"', STR_TO_DATE('"+date->toString("dd-MM-yyyy")+"',\"%d-%m-%Y\"))");

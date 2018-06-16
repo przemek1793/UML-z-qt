@@ -14,7 +14,7 @@ int main(int argc, char *argv[])
     db.setDatabaseName("uml_qt");
     db.setUserName("root");
     db.setPassword("");
-    bool ok = db.open();
+    db.open();
 
     QSqlQuery query;
 

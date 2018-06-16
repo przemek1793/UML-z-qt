@@ -24,6 +24,8 @@ private slots:
 
     void zwolnij_Doradce(QString doradca);
 
+    void zwolnij_Obsluge(int ilu);
+
 private:
     Ui::ZmienDanePrzyjecia *ui;
 };

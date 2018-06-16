@@ -7,6 +7,7 @@ extern QStackedWidget* stack;
 extern QString loginZalogowany;
 QString nazwaPrzyjecia;
 QStringList ListaDoradcow;
+int ileObslugi;
 
 ZmienDanePrzyjecia::ZmienDanePrzyjecia(int indeks, const QDate* data1, QWidget *parent) :
     QDialog(parent),
@@ -22,7 +23,7 @@ ZmienDanePrzyjecia::ZmienDanePrzyjecia(int indeks, const QDate* data1, QWidget *
     nazwaPrzyjecia=query.value(0).toString();
     ui->Nazwa->setText(nazwaPrzyjecia);
     QString obsluga=query.value(1).toString();
-    int ileObslugi=0;
+    ileObslugi=0;
     if (obsluga!="")
     {
         QStringList Listaobslugi = obsluga.split(',');
@@ -91,6 +92,26 @@ void ZmienDanePrzyjecia::on_Zmiana_clicked()
             komunikat=komunikat+"Udało się zwolnić wybranych doradców ";
         }
     }
+    if (ui->IluObslugi->text()!="")
+    {
+        if (ui->IluObslugi->text().toInt()==0)
+        {
+            komunikat=komunikat+"Niepoprawna ilość pracowników do zwolnienia ";
+        }
+        else
+        {
+            int iluPracownikow=ui->IluObslugi->text().toInt();
+            if (iluPracownikow>ileObslugi)
+            {
+                komunikat=komunikat+"Nie możesz zwolnić więcej ludzi niż jest zatrudnionych ";
+            }
+            else
+            {
+                zwolnij_Obsluge(iluPracownikow);
+                komunikat=komunikat+"Udało się zwolnić obsługę ";
+            }
+        }
+    }
     ui->komunikat->setText(komunikat);
 }
 
@@ -103,4 +124,18 @@ void ZmienDanePrzyjecia::zwolnij_Doradce(QString doradca)
     pracownicy=pracownicy.remove(doradca+",");
     query.exec("UPDATE przyjecia SET zatrudnieni_doradcy='"+pracownicy+"' WHERE data_wydarzenia=STR_TO_DATE('"+date->toString("dd-MM-yyyy")+"',\"%d-%m-%Y\") and zatrudnieni_doradcy LIKE '%"+doradca+",%'");
     query.exec("INSERT INTO wiadomosci (nadawca, odbiorca, wiadomosc, data_wiadomości) VALUES ('System', '"+doradca+"', 'Zostales zwolniony z przyjecia organizowanego dnia "+date->toString("dd-MM-yyyy")+"', STR_TO_DATE('"+date->toString("dd-MM-yyyy")+"',\"%d-%m-%Y\"))");
+}
+
+void ZmienDanePrzyjecia::zwolnij_Obsluge(int ilu)
+{
+    QSqlQuery query;
+    query.exec("SELECT zatrudniona_obsluga FROM przyjecia WHERE data_wydarzenia=STR_TO_DATE('"+date->toString("dd-MM-yyyy")+"',\"%d-%m-%Y\") and organizator='"+loginZalogowany+"'");
+    query.first();
+    QString pracownicy=query.value(0).toString();
+    QStringList ListaPracownikow = pracownicy.split(",");
+    for (int i=0;i<ilu;i++)
+    {
+        pracownicy=pracownicy.remove(ListaPracownikow.value(i)+",");
+    }
+    query.exec("UPDATE przyjecia SET zatrudniona_obsluga='"+pracownicy+"' WHERE data_wydarzenia=STR_TO_DATE('"+date->toString("dd-MM-yyyy")+"',\"%d-%m-%Y\") and organizator='"+loginZalogowany+"'");
 }
