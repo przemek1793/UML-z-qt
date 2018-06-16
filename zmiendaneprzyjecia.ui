@@ -130,6 +130,13 @@
     </spacer>
    </item>
    <item>
+    <widget class="QLabel" name="komunikat">
+     <property name="text">
+      <string/>
+     </property>
+    </widget>
+   </item>
+   <item>
     <widget class="QPushButton" name="Zmiana">
      <property name="styleSheet">
       <string notr="true">background-color:white;</string>

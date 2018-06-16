@@ -20,6 +20,8 @@ public:
 private slots:
     void on_Wstecz_clicked();
 
+    void on_Zmiana_clicked();
+
 private:
     Ui::ZmienDanePrzyjecia *ui;
 };

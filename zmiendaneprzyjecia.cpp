@@ -5,6 +5,7 @@
 
 extern QStackedWidget* stack;
 extern QString loginZalogowany;
+QString nazwaPrzyjecia;
 
 ZmienDanePrzyjecia::ZmienDanePrzyjecia(int indeks, const QDate* data1, QWidget *parent) :
     QDialog(parent),
@@ -17,7 +18,8 @@ ZmienDanePrzyjecia::ZmienDanePrzyjecia(int indeks, const QDate* data1, QWidget *
     QSqlQuery query;
     query.exec("SELECT nazwa, zatrudniona_obsluga, zatrudnieni_doradcy FROM przyjecia where organizator='"+loginZalogowany+"' and data_wydarzenia=STR_TO_DATE('"+date->toString("dd-MM-yyyy")+"',\"%d-%m-%Y\")");
     query.first();
-    ui->Nazwa->setText(query.value(0).toString()); //dobrze
+    nazwaPrzyjecia=query.value(0).toString();
+    ui->Nazwa->setText(nazwaPrzyjecia);
     QString obsluga=query.value(1).toString();
     int ileObslugi=0;
     if (obsluga!="")
@@ -48,4 +50,21 @@ void ZmienDanePrzyjecia::on_Wstecz_clicked()
     stack->setCurrentIndex(detindeks);
     stack->removeWidget(this);
     this->~ZmienDanePrzyjecia();
+}
+
+void ZmienDanePrzyjecia::on_Zmiana_clicked()
+{
+    ui->komunikat->setText("");
+    QSqlQuery query;
+    if (ui->Nazwa->text()!=nazwaPrzyjecia) //nowa nazwa przyjęcia
+    {
+        if (query.exec("UPDATE przyjecia SET nazwa='"+ui->Nazwa->text()+"' where organizator='"+loginZalogowany+"' and data_wydarzenia=STR_TO_DATE('"+date->toString("dd-MM-yyyy")+"',\"%d-%m-%Y\")"))
+        {
+            ui->komunikat->setText("Zmieniono nazwę przyjęcia.");
+        }
+        else
+        {
+            ui->komunikat->setText("Błąd przy zmianie nazwy przyjęcia.");
+        }
+    }
 }
