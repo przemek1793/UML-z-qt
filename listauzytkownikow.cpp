@@ -116,3 +116,92 @@ void ListaUzytkownikow::on_ZmienDane_clicked()
 
     }
 }
+
+void ListaUzytkownikow::on_Usun_clicked()
+{
+    QSqlQuery query;
+    QDate* wskaznik;
+    if (query.exec("DELETE FROM konta WHERE login = '"+listaUzytkownikow.value(ObecnyKlucz)+"' "))
+    {
+        query.exec("DELETE FROM wiadomosci WHERE odbiorca = '"+listaUzytkownikow.value(ObecnyKlucz)+"' "); //usun wiadomości do usuniętego użytkownika
+        query.exec("SELECT zatrudnieni_doradcy, data_wydarzenia FROM przyjecia WHERE organizator = '"+listaUzytkownikow.value(ObecnyKlucz)+"' ");
+        while (query.next()) //wyślij wiadomość do doradców pracujących przy przyjęciach usuniętego organizatora
+        {
+            QDate temp=query.value(1).toDate();
+            wskaznik=&temp;
+            QStringList doradcy= query.value(0).toString().split(",");
+            for (int i=0;i<doradcy.size();i++)
+            {
+                Wyslij_wiadomosc_o_usunieciu_dla_doradcy(doradcy.value(i),wskaznik);
+            }
+        }
+
+        query.exec("SELECT organizator, zatrudnieni_doradcy, data_wydarzenia FROM przyjecia WHERE zatrudnieni_doradcy like '%"+listaUzytkownikow.value(ObecnyKlucz)+",%' ");
+        while (query.next()) //wyślij wiadomość do organizatorów, że doradca zatrudniony przy ich przyjęciach został usunięty
+        {
+            QDate temp=query.value(2).toDate();
+            wskaznik=&temp;
+            Wyslij_wiadomosc_o_usunieciu_dla_organizatora(query.value(0).toString(),wskaznik);
+            QStringList doradcy= query.value(1).toString().split(",");
+            for (int i=0;i<doradcy.size();i++)
+            {
+                Wyslij_wiadomosc_o_usunieciu_innego_doradcy(doradcy.value(i),wskaznik);
+            }
+            QString StringDoradcow=query.value(1).toString();
+            StringDoradcow=StringDoradcow.remove(listaUzytkownikow.value(ObecnyKlucz)+",");
+            query.exec("UPDATE przyjecia SET zatrudnieni_doradcy='"+StringDoradcow+"' where zatrudnieni_doradcy like '%"+listaUzytkownikow.value(ObecnyKlucz)+",%' ");
+        }
+
+        query.exec("SELECT zatrudniona_obsluga, data_wydarzenia, organizator FROM przyjecia WHERE zatrudniona_obsluga like '%"+listaUzytkownikow.value(ObecnyKlucz)+",%' ");
+        while (query.next())
+        {
+            QDate temp=query.value(1).toDate();
+            wskaznik=&temp;
+            Wyslij_wiadomosc_o_usunieciu_dla_organizatora_obsluga(query.value(2).toString(),wskaznik);
+            QString StringPracownikow=query.value(0).toString();
+            StringPracownikow=StringPracownikow.remove(listaUzytkownikow.value(ObecnyKlucz)+",");
+            query.exec("UPDATE przyjecia SET zatrudniona_obsluga='"+StringPracownikow+"' where zatrudniona_obsluga like '%"+listaUzytkownikow.value(ObecnyKlucz)+",%' ");
+        }
+
+        query.exec("SELECT odmowili_pracy FROM przyjecia WHERE odmowili_pracy like '%"+listaUzytkownikow.value(ObecnyKlucz)+",%' ");
+        while (query.next())
+        {
+            QString StringPracownikow=query.value(0).toString();
+            StringPracownikow=StringPracownikow.remove(listaUzytkownikow.value(ObecnyKlucz)+",");
+            query.exec("UPDATE przyjecia SET odmowili_pracy='"+StringPracownikow+"' where odmowili_pracy like '%"+listaUzytkownikow.value(ObecnyKlucz)+",%' ");
+        }
+
+        query.exec("SELECT zatrudnieni_doradcy, data_wydarzenia FROM przyjecia WHERE organizator = '"+listaUzytkownikow.value(ObecnyKlucz)+"' ");
+
+        ui->Komunikat->setText("Usunięto konto");
+    }
+    else
+    {
+        ui->Komunikat->setText("Błąd przy usuwaniu konta");
+    }
+}
+
+void ListaUzytkownikow::Wyslij_wiadomosc_o_usunieciu_dla_doradcy(QString doradca, const QDate* date)
+{
+    QSqlQuery query;
+    query.exec("INSERT INTO wiadomosci (nadawca, odbiorca, wiadomosc, data_wiadomości) VALUES ('System', '"+doradca+"', 'Przyjecie dnia "+date->toString("dd-MM-yyyy")+" przy ktorym pracowales zostalo odwolane' , STR_TO_DATE('"+date->toString("dd-MM-yyyy")+"',\"%d-%m-%Y\"))");
+}
+
+void ListaUzytkownikow::Wyslij_wiadomosc_o_usunieciu_innego_doradcy(QString doradca, const QDate* date)
+{
+    QSqlQuery query;
+    query.exec("INSERT INTO wiadomosci (nadawca, odbiorca, wiadomosc, data_wiadomości) VALUES ('System', '"+doradca+"', 'Jeden z doradcow pracujacych z toba przy przyjeciu dnia "+date->toString("dd-MM-yyyy")+" stracil konto' , STR_TO_DATE('"+date->toString("dd-MM-yyyy")+"',\"%d-%m-%Y\"))");
+}
+
+
+void ListaUzytkownikow::Wyslij_wiadomosc_o_usunieciu_dla_organizatora(QString organizator, const QDate* date)
+{
+    QSqlQuery query;
+    query.exec("INSERT INTO wiadomosci (nadawca, odbiorca, wiadomosc, data_wiadomości) VALUES ('System', '"+organizator+"', 'Konto jednego z doradcow pracujacych przy twoim przyjeciu dnia "+date->toString("dd-MM-yyyy")+" zostalo usuniete', STR_TO_DATE('"+date->toString("dd-MM-yyyy")+"',\"%d-%m-%Y\"))");
+}
+
+void ListaUzytkownikow::Wyslij_wiadomosc_o_usunieciu_dla_organizatora_obsluga(QString organizator, const QDate* date)
+{
+    QSqlQuery query;
+    query.exec("INSERT INTO wiadomosci (nadawca, odbiorca, wiadomosc, data_wiadomości) VALUES ('System', '"+organizator+"', 'Konto jednego z pracownikow obslugi pracujacych przy twoim przyjeciu dnia "+date->toString("dd-MM-yyyy")+" zostalo usuniete', STR_TO_DATE('"+date->toString("dd-MM-yyyy")+"',\"%d-%m-%Y\"))");
+}
